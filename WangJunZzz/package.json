@@ -8,7 +8,7 @@
   "dependencies": {
     "brace-expansion": "^1.1.11",
     "eslint": "^5.16.0",
-    "hexo": "^3.8.0",
+    "hexo": "^3.9.0",
     "hexo-deployer-git": "^1.0.0",
     "hexo-generator-archive": "^0.1.5",
     "hexo-generator-category": "^0.1.3",
