@@ -17,34 +17,34 @@ categories:
 3. 当发布事件时，事件总线会从字典中找出相应的事件处理程序，然后利用反射去调用事件处理程序中的方法。
 
 ### 基于内存事件总线实现
-> 定义一个事件接口
+- 定义一个事件接口
 ``` csharp
     public interface IEvent
     {
     }
 ```
-> 定义一个事件处理接口
+- 定义一个事件处理接口
 ``` csharp
     public  interface  IEventHandler : IEvent
     {
        Task Handle(IEvent e);
     }
 ```
-> 定义一个发布接口
+- 定义一个发布接口
 ``` csharp
     public interface IEventSubscriber 
     {    
         Task Subscribe<TEvent, EH>() where TEvent : IEvent where EH : class, IEventHandler, new();
     }
 ```
-> 创建一个类用来存事件
+- 创建一个类用来存事件
 ``` csharp
     public static class MemoryMq
     {
         public static ConcurrentDictionary<string, IEvent> eventQueueDict { get; set; }
     }
 ```
-> 实现发布类
+- 实现发布类
 ``` csharp
 	public class InMemoryEventPublisher : IEventPublisher
 	{
@@ -60,7 +60,7 @@ categories:
 		}
 	}
 ```
-> 实现订阅类
+- 实现订阅类
 ``` csharp
 	public class InMemoryEventSubscriber : IEventSubscriber
 	{
@@ -86,7 +86,7 @@ categories:
 			return Task.CompletedTask;
 		}
 ```
-> 实现逻辑处理
+- 实现逻辑处理
 ``` csharp
 	public class EventHandler : IEventHandler
 	{
@@ -107,7 +107,7 @@ categories:
         public string name { get; set; }
     }
 ```
-> 测试
+- 测试
 ``` csharp
 	class Program
 	{
