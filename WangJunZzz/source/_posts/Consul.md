@@ -67,7 +67,11 @@ categories:
 
 ``` bash
 # 启动Consul和web管理
-docker run -d -p 8001:8500  --name=consul_server_1 consul agent -server -bootstrap -ui -node=1 -client='0.0.0.0'
+docker run -d -p 8001:8500 --name consulserver-01 consul agent -server -bootstrap -ui -node=Node-01 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config
+docker run -d  --name consulserver-02 consul agent -server -bootstrap -ui -node=Node-02 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config -join='172.17.0.2'
+docker run -d  --name consulserver-03 consul agent -server -bootstrap -ui -node=Node-03 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config -join='172.17.0.2'
+docker run -d  --name consulclient-01 consul agent -client -bootstrap -ui -node=Node-client-01 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config -join='172.17.0.2'
+
 # 查看consul信息
 docker exec consul_server_1 consul members
 #Node  Address          Status  Type    Build  Protocol  DC   Segment
