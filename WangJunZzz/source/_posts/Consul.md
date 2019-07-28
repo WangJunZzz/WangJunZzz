@@ -29,7 +29,7 @@ categories:
 4. 支持 HTTP、DNS 和 GPRS 协议接口。 zookeeper 的集成较为复杂，etcd 只支持 http 协议。
 5. 官方提供 WEB管理界面，etcd 无此功能。
 
-### 名词解释
+### Glossary
 1. Client：表示 Consul 客户端模式，是 Consul 节点的一种模式，所有注册到 Client 节点的服务会被转发到 Server 。本身无状态不持久化如何数据。Client 通过 HTTP、DNS、GRPC 接口请求转发给局域网内的服务端集群。
 2. Server：表示 Consul 的服务端模式， Server 功能和 Client 都一样，不同的是 Server 持久化数据到本地。在局域网内与本地 Client 通讯，通过广域网与其他数据中心通讯。每个数据中心的 Server 数量推荐为 3 个或是 5 个。
 3. Server-Leader ：表示这个 Server 是它们的老大，它和其它 Server 不一样的一点是，它需要负责同步注册的信息给其它的 Server 节点，同时也要负责各个节点的健康监测。如果 Leader 宕机了，通数据中心的所有 Server 内部会使用 Raft 算法来在其中选取一个 Leader 出来。
@@ -67,10 +67,10 @@ categories:
 
 ``` bash
 # 启动Consul和web管理
-docker run -d -p 8001:8500 --name consulserver-01 consul agent -server -bootstrap -ui -node=Node-01 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config
-docker run -d  --name consulserver-02 consul agent -server -bootstrap -ui -node=Node-02 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config -join='172.17.0.2'
-docker run -d  --name consulserver-03 consul agent -server -bootstrap -ui -node=Node-03 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config -join='172.17.0.2'
-docker run -d  --name consulclient-01 consul agent -client -bootstrap -ui -node=Node-client-01 -client='0.0.0.0' -data-dir consul/data -config-dir consul/config -join='172.17.0.2'
+docker run -d -p 8001:8500 --name consulserver-01 consul agent -server -bootstrap -ui -node=Node-01 -client='0.0.0.0' -data-dir ~/consul/data -config-dir ~/consul/config
+docker run -d  --name consulserver-02 consul agent -server -bootstrap -ui -node=Node-02 -client='0.0.0.0' -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join='172.17.0.2'
+docker run -d  --name consulserver-03 consul agent -server -bootstrap -ui -node=Node-03 -client='0.0.0.0' -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join='172.17.0.2'
+docker run -d  --name consulclient-01 consul agent -client -bootstrap -ui -node=Node-client-01 -client='0.0.0.0' -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join='172.17.0.2'
 
 # 查看consul信息
 docker exec consul_server_1 consul members

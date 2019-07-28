@@ -81,7 +81,7 @@ post_meta:
 # recent-posts 中文章内容显示的字数
 # 不推荐使用，请尽量在文章中使用 <!-- more --> 来定位要截断的内容
 auto_excerpt:
-  enable: false
+  enable: true
   length: 200
 
 # algolia 搜索
