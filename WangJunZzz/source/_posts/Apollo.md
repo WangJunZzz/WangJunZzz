@@ -79,10 +79,9 @@ tags:
     [ApiController]
     public class ValuesController : ControllerBase
     {
-
         private IOptions<ConfigMsg> config;
 
-        public ValuesController(IOptions<ConfigMsg> configMsg)
+        public ValuesController(IOptions<ConfigMsg> configMsg)2
         {
             config = configMsg;
         }
