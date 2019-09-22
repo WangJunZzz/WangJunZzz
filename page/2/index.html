@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,12 +80,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en">
+<meta property="og:title" content="你好,WangJunZzz">
+<meta property="og:url" content="https://github.com/WangJunZzz/page/2/index.html">
+<meta property="og:site_name" content="你好,WangJunZzz">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="你好,WangJunZzz">
 
 
 
@@ -93,15 +93,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/2/">
+  <link rel="canonical" href="https://github.com/WangJunZzz/page/2/">
 
 
 
 
 
-  <title>Hexo</title>
+  <title>你好,WangJunZzz</title>
   
 
 
@@ -133,14 +133,14 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -152,7 +152,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">你好,WangJunZzz</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -180,9 +180,9 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home  //首页"></i> <br>
             
-            Home
+            首页
           </a>
         </li>
       
@@ -190,9 +190,29 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user  //关于"></i> <br>
             
-            About
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags  //标签"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th   //分类"></i> <br>
+            
+            分类
           </a>
         </li>
       
@@ -200,17 +220,69 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-文章"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive //归档"></i> <br>
             
-            Archives
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar   //日程表"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap   //站点地图"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -239,16 +311,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Mysql-Beginner/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/07/29/Mysql-Beginner/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="WangJunZzz">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="你好,WangJunZzz">
     </span>
 
     
@@ -268,9 +340,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-29T00:15:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T00:15:04+08:00">
                 2019-07-29
               </time>
             
@@ -289,7 +361,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -305,6 +377,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/29/Mysql-Beginner/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/29/Mysql-Beginner/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -332,42 +414,17 @@
       
         
           
-            <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
-<li><p>字符转日期</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 日期2019-08-08 -&gt; 20190808  </span></span><br><span class="line">CAST(CURRENT_DATE() AS SIGNED)</span><br><span class="line"><span class="comment"># 时间 00:08:15 -&gt; 815</span></span><br><span class="line">CAST(CURRENT_TIME() AS SIGEND)</span><br><span class="line"><span class="comment"># 时间戳 2019-08-08 00:08:15</span></span><br><span class="line">CAST(NOW() AS SIGNED)</span><br><span class="line"><span class="comment"># 日期 2019-08-08 -&gt; 2020</span></span><br><span class="line">YEAR(CURRENT_DATE())</span><br><span class="line"><span class="comment"># 00:08:15 -&gt; 15</span></span><br><span class="line">SECOND(CURRENT_DATE())</span><br><span class="line"><span class="comment"># 时间转unix时间错</span></span><br><span class="line">UNIX_TIMESTAMP(NOW())</span><br><span class="line"><span class="comment"># 字符串转时间</span></span><br><span class="line">CAST('2019-08-08' AS DATE)</span><br><span class="line"><span class="comment"># 字符串转日期</span></span><br><span class="line">DATE_FROMAT(CURRENT_DATE(),'%Y-%m-%d')</span><br><span class="line"><span class="comment"># 获取日期</span></span><br><span class="line">DAYNAME(CURRENT_DATE())</span><br><span class="line">MONTH(CURRENT_DATE())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>聚合函数(常用于GROUP BY从句的SELECT查询中)</p>
-</li>
-</ul>
-<ol>
-<li>AVG(col)　　　　　　　　返回指定列的平均值</li>
-<li>COUNT(col)　　　　　　　返回指定列中非NULL值的个数</li>
-<li>MIN(col)　　　　　　　　返回指定列的最小值</li>
-<li>MAX(col)　　　　　　　　返回指定列的最大值</li>
-<li>SUM(col)　　　　　　　　返回指定列的所有值之和</li>
-<li>GROUP_CONCAT(col)　    返回由属于一组的列值连接组合而成的结果</li>
-</ol>
-<ul>
-<li>字符串函数</li>
-</ul>
-<ol>
-<li>CONCAT(s1,s2…,sn)　　       将s1,s2…,sn连接成字符串</li>
-<li>CONCAT_WS(sep,s1,s2…,sn)　　将s1,s2…,sn连接成字符串，并用sep字符间隔</li>
-<li>LEFT(str,x)　　　　　　　　    返回字符串str中最左边的x个字符</li>
-<li>RIGHT(str,x)　　　　　　　     返回字符串str中最右边的x个字符</li>
-</ol>
-<ul>
-<li>控制流函数</li>
-</ul>
-<ol>
-<li>CASE WHEN[test1] THEN [result1]…ELSE [default] END 如果testN是真，则返回resultN，否则返回default</li>
-<li>CASE [test] WHEN[val1] THEN [result]…ELSE [default] END 如果test和valN相等，则返回resultN，否则返回default</li>
-<li>IF(test,t,f) 如果test是真，返回t；否则返回 f</li>
-<li>IFNULL(arg1,arg2) 如果arg1不是空，返回arg1，否则返回arg2</li>
-<li>NULLIF(arg1,arg2) 如果arg1=arg2返回NULL；否则返回arg1</li>
-</ol>
-
-          
+          函数
+字符转日期
+12345678910111213141516171819# 日期2019-08-08 -&gt; 20190808  CAST(CURRENT_DATE() AS SIGNED)# 时间 00:08:15 -&gt; 815CAST(CURRENT_TIME() AS SIGEN
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/29/Mysql-Beginner/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -414,16 +471,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/Consul/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/07/21/Consul/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="WangJunZzz">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="你好,WangJunZzz">
     </span>
 
     
@@ -443,9 +500,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T22:46:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T22:46:21+08:00">
                 2019-07-21
               </time>
             
@@ -464,7 +521,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -480,6 +537,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/21/Consul/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/Consul/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -507,74 +574,20 @@
       
         
           
-            <h3 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h3><ul>
-<li>Consul包含多个组件,但是作为一个整体,为你的基础设施提供服务发现和服务配置的工具。</li>
-</ul>
-<ol>
-<li>服务发现：Consul的客户端可提供一个服务，比如api或者mysql，另外一些客户端可使用Consul去发现一个指定的服务提供者，通过DNS或者Http应用程序很容易找到他依赖的服务。</li>
-<li>健康检查：Consul客户端可提供任意数量的健康检查，指定一个服务（比如一个api是否返回了200）或者使用本地节点（比如内存是否大于90%），这个信息可由opreator用来监视集群的健康，被服务发现组件用来避免将流量发送到不健康的主机。</li>
-<li>Key/Value存储：应用程序可根据自己需要使用的Consul的层级的Key/Value存储，比如动态配置，功能标记，协调，领袖选举等。</li>
-<li>多数据中心：Consul支持开箱即用的多数据中心，这意味着用户不需要担心建立额外的抽象层让业务扩展到多个区域，Consul面对DevOps和应用开发者友好，是他适合现代弹性的基础设置。</li>
-</ol>
-<h3 id="Consul使用场景"><a href="#Consul使用场景" class="headerlink" title="Consul使用场景"></a>Consul使用场景</h3><ol>
-<li>Docker 实例的注册与配置共享。</li>
-<li>Coreos 实例的注册与配置共享。</li>
-<li>SaaS 应用的配置共享、服务发现和健康检查。</li>
-<li>vitess 集群。</li>
-<li>与 confd 服务集成，动态生成 nginx 和 haproxy 配置文件。</li>
-</ol>
-<h3 id="Consul优势"><a href="#Consul优势" class="headerlink" title="Consul优势"></a>Consul优势</h3><ul>
-<li>市面现在有很多类似的软件比如：zookeeper 、Etcd、doozerd、eureka，Consul 相比这些软件有什么优势呢？</li>
-</ul>
-<ol>
-<li>使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft。</li>
-<li>支持 多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障，而其部署则需要考虑网络延迟，分片等情况等. zookeeper 和 etcd 均不提供多数据中心功能的支持。</li>
-<li>支持 健康检查。 etcd 不提供此功能。</li>
-<li>支持 HTTP、DNS 和 GPRS 协议接口。 zookeeper 的集成较为复杂，etcd 只支持 http 协议。</li>
-<li>官方提供 WEB管理界面，etcd 无此功能。</li>
-</ol>
-<h3 id="Glossary"><a href="#Glossary" class="headerlink" title="Glossary"></a>Glossary</h3><ol>
-<li>Client：表示 Consul 客户端模式，是 Consul 节点的一种模式，所有注册到 Client 节点的服务会被转发到 Server 。本身无状态不持久化如何数据。Client 通过 HTTP、DNS、GRPC 接口请求转发给局域网内的服务端集群。</li>
-<li>Server：表示 Consul 的服务端模式， Server 功能和 Client 都一样，不同的是 Server 持久化数据到本地。在局域网内与本地 Client 通讯，通过广域网与其他数据中心通讯。每个数据中心的 Server 数量推荐为 3 个或是 5 个。</li>
-<li>Server-Leader ：表示这个 Server 是它们的老大，它和其它 Server 不一样的一点是，它需要负责同步注册的信息给其它的 Server 节点，同时也要负责各个节点的健康监测。如果 Leader 宕机了，通数据中心的所有 Server 内部会使用 Raft 算法来在其中选取一个 Leader 出来。</li>
-<li>Agent ：Agent 是 Consul 的核心进程，Agent 的工作是维护成员关系信息、注册服务、健康检查、响应查询等等。Consul 集群的每一个节点都必须运行 agent 进程。</li>
-</ol>
-<h3 id="Consul的工作原理"><a href="#Consul的工作原理" class="headerlink" title="Consul的工作原理"></a>Consul的工作原理</h3><ol>
-<li>使用微服务架构。传统的单体架构不够灵活不能很好的适应变化，从而向微服务架构进行转换，而伴随着大量服务的出现，管理运维十分不便，于是开始搞一些自动化的策略，服务发现应运而生。但是引入服务发现就可能引入一些技术栈，增加系统总体的复杂度。<br><img src="/images/consul.png" alt></li>
-<li>在服务器Server1、Server2、Server3上分别部署了Consul Server，假设他们选举了Server2上的Consul Server节点为Leader.</li>
-<li>在服务器Server4和Server5上通过Consul Client分别注册Service A、B、C。服务注册到Consul可以通过HTTP API（8500端口）的方式，也可以通过Consul配置文件的方式。Consul Client可以认为是无状态的，它将注册信息通过RPC转发到Consul Server，服务信息保存在Server的各个节点中，并且通过Raft实现了强一致性。</li>
-<li>在服务器Server6中Program D需要访问Service B，这时候Program D首先访问本机Consul Client提供的HTTP API，本机Client会将请求转发到Consul Server，Consul Server查询到Service B当前的信息返回，最终Program D拿到了Service B的所有部署的IP和端口，然后就可以选择Service B的其中一个部署并向其发起请求了。如果服务发现采用的是DNS方式，则Program D中直接使用Service B的服务发现域名，域名解析请求首先到达本机DNS代理，然后转发到本机Consul Client，本机Client会将请求转发到Consul Server，Consul Server查询到Service B当前的信息返回，最终Program D拿到了Service B的某个部署的IP和端口。</li>
-</ol>
-<ul>
-<li><a href="http://blog.didispace.com/consul-service-discovery-exp" target="_blank" rel="noopener">http://blog.didispace.com/consul-service-discovery-exp</a></li>
-</ul>
-<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ol>
-<li>advertise：通知展现地址用来改变我们给集群中的其他节点展现的地址，一般情况下-bind地址就是展现地址。</li>
-<li>bootstrap：    用来控制一个server是否在bootstrap模式，在一个datacenter中只能有一个server处于bootstrap模式，当一个server处于bootstrap模式时，可以自己选举为raft leader。</li>
-<li>bootstrap-expect：在一个datacenter中期望提供的server节点数目，当该值提供的时候，consul一直等到达到指定sever数目的时候才会引导整个集群，该标记不能和bootstrap共用。</li>
-<li>bind：该地址用来在集群内部的通讯IP地址，集群内的所有节点到地址都必须是可达的，默认是0.0.0.0。</li>
-<li>client：consul绑定在哪个client地址上，这个地址提供HTTP、DNS、RPC等服务，默认是127.0.0.1。</li>
-<li>config-file：明确的指定要加载哪个配置文件。</li>
-<li>config-dir：配置文件目录，里面所有以.json结尾的文件都会被加载。</li>
-<li>data-dir：提供一个目录用来存放agent的状态，所有的agent允许都需要该目录，该目录必须是稳定的，系统重启后都继续存在。</li>
-<li>dc:该标记控制agent允许的datacenter的名称，默认是dc1。</li>
-<li>encrypt：    指定secret key，使consul在通讯时进行加密，key可以通过consul keygen生成，同一个集群中的节点必须使用相同的key。</li>
-<li>join：加入一个已经启动的agent的ip地址，可以多次指定多个agent的地址。如果consul不能加入任何指定的地址中，则agent会启动失败，默认agent启动时不会加入任何节点。</li>
-<li>retry-interval：两次join之间的时间间隔，默认是30s。</li>
-<li>retry-max：尝试重复join的次数，默认是0，也就是无限次尝试。</li>
-<li>log-level：consul agent启动后显示的日志信息级别。默认是info，可选：trace、debug、info、warn、err。</li>
-<li>node：节点在集群中的名称，在一个集群中必须是唯一的，默认是该节点的主机名。</li>
-<li>protocol：consul使用的协议版本。</li>
-<li>rejoin：使consul忽略先前的离开，在再次启动后仍旧尝试加入集群中。</li>
-<li>server：定义agent运行在server模式，每个集群至少有一个server，建议每个集群的server不要超过5个。</li>
-<li>syslog：开启系统日志功能，只在linux/osx上生效。</li>
-<li>pid-file：提供一个路径来存放pid文件，可以使用该文件进行SIGINT/SIGHUP(关闭/更新)agent。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动Consul和web管理</span></span><br><span class="line">docker run -d -p 8001:8500 --name consulserver-01 consul agent -server -bootstrap -ui -node=Node-01 -client=<span class="string">'0.0.0.0'</span> -data-dir ~/consul/data -config-dir ~/consul/config</span><br><span class="line">docker run -d  --name consulserver-02 consul agent -server -bootstrap -ui -node=Node-02 -client=<span class="string">'0.0.0.0'</span> -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join=<span class="string">'172.17.0.2'</span></span><br><span class="line">docker run -d  --name consulserver-03 consul agent -server -bootstrap -ui -node=Node-03 -client=<span class="string">'0.0.0.0'</span> -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join=<span class="string">'172.17.0.2'</span></span><br><span class="line">docker run -d  --name consulclient-01 consul agent -client -bootstrap -ui -node=Node-client-01 -client=<span class="string">'0.0.0.0'</span> -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join=<span class="string">'172.17.0.2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看consul信息</span></span><br><span class="line">docker <span class="built_in">exec</span> consul_server_1 consul members</span><br><span class="line"><span class="comment">#Node  Address          Status  Type    Build  Protocol  DC   Segment</span></span><br><span class="line"><span class="comment">#1     172.17.0.2:8301  alive   server  1.5.2  2         dc1  &lt;all&gt;</span></span><br><span class="line"><span class="comment">#通过命令获取到引导 Consul 的 Ip 地址 172.17.0.2 </span></span><br><span class="line"><span class="comment">#加入到集群， 命名为 -node=2 、-node=3</span></span><br><span class="line"> docker run -d  --name=consul_server_2 consul agent -server -bootstrap -ui -node=2 -client=<span class="string">'0.0.0.0'</span> -join=<span class="string">'172.17.0.2'</span></span><br><span class="line"> docker run -d  --name=consul_server_3 consul agent -server -bootstrap -ui -node=3 -client=<span class="string">'0.0.0.0'</span> -join=<span class="string">'172.17.0.2'</span></span><br><span class="line"> <span class="comment"># 添加Client</span></span><br><span class="line"> docker run -d  --name=consul_server_4 consul agent -client -node=4 -join=<span class="string">'172.17.0.2'</span> -client=<span class="string">'0.0.0.0'</span></span><br><span class="line"> <span class="comment"># Client需要集群继续添加node5，6就好</span></span><br></pre></td></tr></table></figure>
+          Consul
+Consul包含多个组件,但是作为一个整体,为你的基础设施提供服务发现和服务配置的工具。
 
-<p> <img src="/images/node.png" alt></p>
 
-          
+服务发现：Consul的客户端可提供一个服务，比如api或者mysql，另外一些客户端可使用Consul去发现一个指定的服务提供者，通过DNS或者Http应用程序很容易找到他依赖的服务。
+健康
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/21/Consul/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -621,16 +634,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/Async-Await/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/07/21/Async-Await/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="WangJunZzz">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="你好,WangJunZzz">
     </span>
 
     
@@ -650,9 +663,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T15:21:36+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T15:21:36+08:00">
                 2019-07-21
               </time>
             
@@ -671,7 +684,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -687,6 +700,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/21/Async-Await/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/Async-Await/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -714,56 +737,20 @@
       
         
           
-            <h3 id="Task对象的前世今生"><a href="#Task对象的前世今生" class="headerlink" title="Task对象的前世今生"></a>Task对象的前世今生</h3><ul>
-<li>Task对象是.Net Framework 4.0之后出现的异步编程的一个重要对象。在一定程度上来说，Task对象可以理解Thread对象的一个升级产品。</li>
-</ul>
-<ul>
-<li><p>示例</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"执行方法之前的时间："</span> + DateTime.Now.ToString(<span class="string">"yyyy-MM-dd hh:MM:sss"</span>));</span><br><span class="line">        <span class="keyword">var</span> result = Task.Run(() =&gt;&#123;<span class="keyword">return</span> GetResult();&#125;);</span><br><span class="line">        Console.WriteLine(<span class="string">"主线程Id:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">        Console.WriteLine(result.Result);</span><br><span class="line">        Console.WriteLine(<span class="string">"执行方法之后的时间："</span> + DateTime.Now.ToString(<span class="string">"yyyy-MM-dd hh:MM:sss"</span>));</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">GetResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"GetResult的线程Id:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"WangJunZzz"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#执行方法之前的时间：2019-07-21 01:07:42</span></span><br><span class="line"><span class="meta">#WangJunZzz</span></span><br><span class="line"><span class="meta">#执行方法之后的时间：2019-07-21 01:07:44</span></span><br><span class="line"><span class="meta">#PS E:\Code\async\async-await&gt; dotnet run</span></span><br><span class="line"><span class="meta">#执行方法之前的时间：2019-07-21 01:07:52</span></span><br><span class="line"><span class="meta">#主线程Id:1</span></span><br><span class="line"><span class="meta">#GetResult的线程Id:3</span></span><br><span class="line"><span class="meta">#WangJunZzz</span></span><br><span class="line"><span class="meta">#执行方法之后的时间：2019-07-21 01:07:54</span></span><br></pre></td></tr></table></figure>
+          Task对象的前世今生
+Task对象是.Net Framework 4.0之后出现的异步编程的一个重要对象。在一定程度上来说，Task对象可以理解Thread对象的一个升级产品。
 
-</li>
-</ul>
-<blockquote>
-<p>从结果分析得知，var result = Task.Run(() =&gt;{return GetResult();});这一句后，主线程并没有阻塞取执行GetResult()方法，而是开启一个线程取执行GetResult()方法。知道执行result.Result这一句的时候才会等待GetResult()方法执行完毕。由此可知，Task.Run(()=&gt;{}).Reslut是阻塞主线程的，主要因为主线程要得到返回值，必须等方法执行完毕。</p>
-</blockquote>
-<h3 id="线程不安全"><a href="#线程不安全" class="headerlink" title="线程不安全"></a>线程不安全</h3><ul>
-<li><p>示例</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> isDone = <span class="literal">false</span>;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(Done).Start();</span><br><span class="line">        <span class="keyword">new</span> Thread(Done).Start();</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Done</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isDone)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Done"</span>);</span><br><span class="line">            isDone = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#Done</span></span><br><span class="line"><span class="meta">#Done</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<blockquote>
-<p>第一个线程还没有来得及把isDone设置成true，第二个线程就进来了，而这不是我们想要的结果，在多个线程下，结果不是我们的预期结果，这就是线程不安全。</p>
-</blockquote>
-<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><ul>
-<li>示例<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> isDone = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">object</span> mylock = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(Done).Start();</span><br><span class="line">        <span class="keyword">new</span> Thread(Done).Start();</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Done</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">lock</span>(mylock)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isDone)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Done"</span>);</span><br><span class="line">            isDone = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<blockquote>
-<p>加上锁之后，被锁住的代码在同一个时间内只允许一个线程访问，其它的线程会被阻塞，只有等到这个锁被释放之后其它的线程才能执行被锁住的代码。</p>
-</blockquote>
-<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async,Await"></a>Async,Await</h3><ol>
-<li>使用它们，方法的返回类型应为Task类型。为了使用await关键字，您必须在方法定义中使用async。如果你在方法定义中放入async，你应该在主体方法的某个地方至少有一处await关键字，如果你缺少他，你通常会收到Visual Studio的一个警告。</li>
-<li>await 之后不会开启新的线程(await 从来不会开启新的线程)。</li>
-<li>加上await关键字之后，后面的代码会被挂起等待，直到task执行完毕有返回值的时候才会继续向下执行，这一段时间主线程会处于挂起状态。</li>
-<li>Task.Run(()=&gt;{}); 将一个任务添加到线程池里，排队执行。</li>
-<li>async 标识一个方法为异步方法，可以与主线程并行执行，发挥CPU的多核优势。</li>
-<li>await 在调用一个async方法前可以添加这个修饰符，它意思是等待当前异步方法执行完后，再执行下面的代码。</li>
-<li>ConfigureAwait(true)，代码由同步执行进入异步执行时，当前线程上下文信息就会被捕获并保存至 SynchronizationContext中，供异步执行中使用，并且供异步执行完成之后的同步执行中使用。</li>
-<li>Configurewait(flase)，不进行线程上下文信息的捕获，async方法中与await之后的代码执行时就无法获取await之前的线程的上下文信息，在ASP.NET中最直接的影响就是HttpConext.Current的值为null，但不会出现非空引用的错误。</li>
-<li>async配合Task是为了简化异步调用，异步调用的目的恰恰就是为了释放线程资源。</li>
-<li>在await的时候，线程就被释放了，等到异步操作完成才会回头来继续执行后面的代码。async的用途恰恰就在于避免阻塞，写的代码看起来像是同步的阻塞代码，但编译后不是，这才是async的精髓。(<a href="https://www.cnblogs.com/jesse2013/p/async-and-await.html" target="_blank" rel="noopener">https://www.cnblogs.com/jesse2013/p/async-and-await.html</a> 评论)。</li>
-<li>在.NetCore中我们不用继续关心异步同步混用情况下，是否哪里没有设置ConfigureAwait(false) 会导致的死锁问题，因为在.netcore中的async/await 可能在任何线程上执行，并且可能并行运行！。</li>
-</ol>
-
-          
+示例
+12345678910111213141516171819class Program&#123;    sta
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/21/Async-Await/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -810,16 +797,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/EventBus/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/07/09/EventBus/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="WangJunZzz">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="你好,WangJunZzz">
     </span>
 
     
@@ -839,9 +826,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-09T23:22:26+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T23:22:26+08:00">
                 2019-07-09
               </time>
             
@@ -860,7 +847,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -876,6 +863,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/09/EventBus/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/09/EventBus/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -903,43 +900,18 @@
       
         
           
-            <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><ul>
-<li>事件总线这个概念对你来说可能很陌生，但提到观察者（发布-订阅）模式，你也许就很熟悉。事件总线是对发布-订阅模式的一种实现。它是一种集中式事件处理机制，允许不同的组件之间进行彼此通信而又不需要相互依赖，达到一种解耦的目的。</li>
-<li>本质：事件是由事件源和事件处理组成。</li>
-<li>发布订阅模式：定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新。 ——发布订阅模式。</li>
-</ul>
-<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><ol>
-<li>在事件总线内部维护着一个事件与事件处理程序相映射的字典。</li>
-<li>利用反射，事件总线会将实现了IEventHandler的处理程序与相应事件关联到一起，相当于实现了事件处理程序对事件的订阅。</li>
-<li>当发布事件时，事件总线会从字典中找出相应的事件处理程序，然后利用反射去调用事件处理程序中的方法。</li>
-</ol>
-<h3 id="基于内存事件总线实现"><a href="#基于内存事件总线实现" class="headerlink" title="基于内存事件总线实现"></a>基于内存事件总线实现</h3><ul>
-<li><p>定义一个事件接口</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEvent</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义一个事件处理接口</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="keyword">interface</span>  <span class="title">IEventHandler</span> : <span class="title">IEvent</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="function">Task <span class="title">Handle</span>(<span class="params">IEvent e</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义一个发布接口</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEventSubscriber</span> </span><br><span class="line">&#123;    </span><br><span class="line">    Task Subscribe&lt;TEvent, EH&gt;() where TEvent : IEvent where EH : class, IEventHandler, new();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建一个类用来存事件</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">MemoryMq</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ConcurrentDictionary&lt;<span class="keyword">string</span>, IEvent&gt; eventQueueDict &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现发布类</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">InMemoryEventPublisher</span> : <span class="title">IEventPublisher</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> Task Publish&lt;TEvent&gt;(TEvent e) <span class="keyword">where</span> TEvent : IEvent</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (e == <span class="literal">null</span>) <span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">		<span class="keyword">if</span> (MemoryMq.eventQueueDict == <span class="literal">null</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			MemoryMq.eventQueueDict = <span class="keyword">new</span> ConcurrentDictionary&lt;<span class="keyword">string</span>, IEvent&gt;();</span><br><span class="line">		&#125;</span><br><span class="line">		MemoryMq.eventQueueDict.GetOrAdd(Guid.NewGuid().ToString(), e);</span><br><span class="line">		<span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现订阅类</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">InMemoryEventSubscriber</span> : <span class="title">IEventSubscriber</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> Task Subscribe&lt;TEvent, EH&gt;() <span class="keyword">where</span> TEvent : IEvent</span><br><span class="line">		 where EH : class, IEventHandler, new()</span><br><span class="line">	&#123;</span><br><span class="line">		EH state = <span class="keyword">new</span> EH();</span><br><span class="line">		Task.Run(() =&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (MemoryMq.eventQueueDict != <span class="literal">null</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> MemoryMq.eventQueueDict)</span><br><span class="line">					&#123;</span><br><span class="line">						state.Handle(item.Value <span class="keyword">as</span> IEvent);</span><br><span class="line">						IEvent o;</span><br><span class="line">						MemoryMq.eventQueueDict.TryRemove(item.Key, <span class="keyword">out</span> o);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现逻辑处理</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EventHandler</span> : <span class="title">IEventHandler</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Task <span class="title">Handle</span>(<span class="params">IEvent e</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">switch</span> (e)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> Order <span class="keyword">value</span>:</span><br><span class="line">				Console.WriteLine(<span class="keyword">value</span>.Name);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Order</span> : <span class="title">IEvent</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">var</span> pub = <span class="keyword">new</span> InMemoryEventPublisher();</span><br><span class="line">		<span class="keyword">var</span> sub = <span class="keyword">new</span> InMemoryEventSubscriber();</span><br><span class="line">		sub.Subscribe&lt;Order, EventHandler&gt;();</span><br><span class="line">		<span class="keyword">var</span> order = <span class="keyword">new</span> Order();</span><br><span class="line">		order.Name = <span class="string">"wangjunzzz"</span>;</span><br><span class="line">		pub.Publish(order);</span><br><span class="line">		Console.WriteLine(<span class="string">"Hello World!"</span>);</span><br><span class="line">		Console.ReadKey();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
+          引言
+事件总线这个概念对你来说可能很陌生，但提到观察者（发布-订阅）模式，你也许就很熟悉。事件总线是对发布-订阅模式的一种实现。它是一种集中式事件处理机制，允许不同的组件之间进行彼此通信而又不需要相互依赖，达到一种解耦的目的。
+本质：事件是由事件源和事件处理组成。
+发布订阅模式：定义对象间一种一对多
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/09/EventBus/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -986,16 +958,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/27/RabbitMq/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/06/27/RabbitMq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="WangJunZzz">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="你好,WangJunZzz">
     </span>
 
     
@@ -1015,9 +987,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-27T23:32:33+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-27T23:32:33+08:00">
                 2019-06-27
               </time>
             
@@ -1036,7 +1008,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1052,6 +1024,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/27/RabbitMq/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/27/RabbitMq/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1079,47 +1061,21 @@
       
         
           
-            <h3 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h3><ul>
-<li>消息中间件是指利用高效可靠得消息传递机制进行与平台数据无关的数据交流，并基于数据通信来进行分布式系统集成。</li>
-<li>RabbitMq整体上是一个生产者和消费者模型，主要负责接收，存储和转发消息。</li>
-<li>RabbitMq就是AMQP(应用层高级消息队列协议)协议的Erlang的实现。</li>
-</ul>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
-<li>解耦：独立修改或者扩展两边的处理过程，只要确保遵循相同的接口约束即可。</li>
-<li>削峰：使用中间件能够使关键组件支撑突发访问压力，不会因为突发的超负荷请求而完全崩溃。</li>
-<li>异步通信：很多时候不想立即处理消息，中间件允许把消息放到中间件中，但是不立即处理它，之后需要的时候在慢慢处理。</li>
-</ol>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><ol>
-<li>生产者：投递消息的一方.</li>
-<li>消费者: 接收消息的一方.</li>
-<li>Broker：消息中间件的服务节点.</li>
-<li>Queue: 队列，RabbitMq的内部对象.</li>
-<li>交换器：生产者把消息发送到Exchange（交换器）,由交换器把消息路由到一个或者多个队列中,如果路由不到,或许会返回给生产者,或许会直接丢弃.RabbitMq有四种交换机类型:<a href="https://www.cnblogs.com/WJ--NET/p/8203380.html" target="_blank" rel="noopener">交换机类型</a></li>
-</ol>
-<h3 id="五种模式"><a href="#五种模式" class="headerlink" title="五种模式"></a>五种模式</h3><ol>
-<li><p>简单模式：一个生产者，一个消费者.</p>
-<blockquote>
-<p>简单模式特点，其实就是是生成者直接将消息发送给队列，消费者直接从队列取消息，中间没有其他的东西，并且1对1的。</p>
-</blockquote>
-<ul>
-<li><p>生产者</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建mq的连接工厂</span></span><br><span class="line"><span class="keyword">var</span> factory = <span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">factory.HostName = <span class="string">"119.29.225.20"</span>;</span><br><span class="line">factory.UserName = <span class="string">"userId"</span>;</span><br><span class="line">factory.Password = <span class="string">"pwd"</span>;</span><br><span class="line"><span class="comment">//创建一个连接</span></span><br><span class="line"><span class="keyword">var</span> connection = factory.CreateConnection();</span><br><span class="line"><span class="comment">//创建一个频道</span></span><br><span class="line"><span class="keyword">var</span> channel = connection.CreateModel();</span><br><span class="line"><span class="comment">//创建一个队列</span></span><br><span class="line"><span class="comment">// durable:持久化可以把交换器存盘，在服务器重启的时候不会丢失相关信息.</span></span><br><span class="line"><span class="comment">// exclusive:如果申明为排它队列,该队列仅对首次申明它的连接可见,并且在连接断开的时候自动删除,</span></span><br><span class="line"><span class="comment">// autoDelete:是否自动删除,自动删除的前提是：至少又一个消费者连接到这个队列,</span></span><br><span class="line"><span class="comment">// 之后所有与这个队列连接的消费者都断开时,才会自动删除.</span></span><br><span class="line">channel.QueueDeclare(queue: <span class="string">"hello"</span>,</span><br><span class="line">                     durable: <span class="literal">false</span>,</span><br><span class="line">                     exclusive: <span class="literal">false</span>,</span><br><span class="line">                     autoDelete: <span class="literal">false</span>,</span><br><span class="line">                     arguments: <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">string</span> message = <span class="string">"Hello World!"</span>+i;</span><br><span class="line">    <span class="keyword">var</span> body = Encoding.UTF8.GetBytes(message) </span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line">    channel.BasicPublish(exchange: <span class="string">""</span>,</span><br><span class="line">                         routingKey: <span class="string">"hello"</span>,</span><br><span class="line">                         basicProperties: <span class="literal">null</span>,</span><br><span class="line">                         body: body);</span><br><span class="line">    Console.WriteLine(<span class="string">" [x] Sent &#123;0&#125;"</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>消费者</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> factory = <span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">factory.HostName = <span class="string">"119.29.225.20"</span>;</span><br><span class="line">factory.UserName = <span class="string">"userId"</span>;</span><br><span class="line">factory.Password = <span class="string">"pwd"</span>;</span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        channel.QueueDeclare(queue: <span class="string">"hello"</span>,</span><br><span class="line">                             durable: <span class="literal">false</span>,</span><br><span class="line">                             exclusive: <span class="literal">false</span>,</span><br><span class="line">                             autoDelete: <span class="literal">false</span>,</span><br><span class="line">                             arguments: <span class="literal">null</span>);</span><br><span class="line">        <span class="keyword">var</span> consumer = <span class="keyword">new</span> EventingBasicConsumer(channel);</span><br><span class="line">        consumer.Received += (model, ea) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> body = ea.Body;</span><br><span class="line">            <span class="keyword">var</span> message = Encoding.UTF8.GetString(body);</span><br><span class="line">            Console.WriteLine(<span class="string">" [x] Received &#123;0&#125;"</span>, message);</span><br><span class="line">        &#125;;</span><br><span class="line">        channel.BasicConsume(queue: <span class="string">"hello"</span>,</span><br><span class="line">                             autoAck: <span class="literal">true</span>,</span><br><span class="line">                             consumer: consumer);</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>工作模式：一个生产者,多个消费者.</p>
-<blockquote>
-<p>消息产生者将消息放入队列消费者可以有多个,消费者1,消费者2,同时监听同一个队列,消息被消费?C1 C2共同争抢当前的消息队列内容,谁先拿到谁负责消费消息(隐患,高并发情况下,默认会产生某一个消息被多个消费者共同使用,可以设置一个开关(syncronize,与同步锁的性能不一样) 保证一条消息只能被一个消费者使用).<br>一条消息只会被一个消费者接收；rabbit采用轮询的方式将消息是平均发送给消费者的；消费者在处理完某条消息后，才会收到下一条消息.</p>
-</blockquote>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          消息中间件
+消息中间件是指利用高效可靠得消息传递机制进行与平台数据无关的数据交流，并基于数据通信来进行分布式系统集成。
+RabbitMq整体上是一个生产者和消费者模型，主要负责接收，存储和转发消息。
+RabbitMq就是AMQP(应用层高级消息队列协议)协议的Erlang的实现。
 
-</li>
-</ol>
-
-          
+作用
+解耦：独立
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/27/RabbitMq/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1192,7 +1148,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-author-name" itemprop="name">WangJunZzz</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -1204,7 +1160,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">15</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -1215,7 +1171,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
@@ -1226,7 +1182,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">8</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -1235,6 +1191,16 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjunzzz" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -1266,13 +1232,13 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">WangJunZzz</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -1280,7 +1246,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 
@@ -1327,6 +1293,8 @@
   
 
 
+  
+
 
 
 
@@ -1367,6 +1335,11 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -1379,13 +1352,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 
@@ -1427,9 +1393,348 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'RQYsCqcW6DHMyWHxkizmaiP1-gzGzoHsz',
+        appKey: 'tMxDsDzIVPbMWtnj6joLs5L2',
+        placeholder: '请在此输入您的留言!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
