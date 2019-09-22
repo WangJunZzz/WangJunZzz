@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Kubernetes是什么？  是一个全新的基于容器技术的分布式架构领先方案，并且是一个一站式的完备的分布式系统开发和支撑平台。   为什么要用Kubernetes？  IT行业从来都是新技术驱动。 全面拥抱微服务架构，微服务架构使得每个服务都可以独立开发，升级和扩展，因此系统具备很高的稳定性和迭代能力，开发者也可以自由选择开发技术。 k8s系统架构超强的横向扩展能力。   使用阿里云镜像安装K">
+<meta name="description" content="使用阿里云镜像安装Kubernetes 前期准备 安装Docker;修改docker镜像源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kubernetes.repo[kubernetes]name=Kubernetesbaseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kuberne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes">
 <meta property="og:url" content="http://yoursite.com/2019/09/02/Kubernetes/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Kubernetes是什么？  是一个全新的基于容器技术的分布式架构领先方案，并且是一个一站式的完备的分布式系统开发和支撑平台。   为什么要用Kubernetes？  IT行业从来都是新技术驱动。 全面拥抱微服务架构，微服务架构使得每个服务都可以独立开发，升级和扩展，因此系统具备很高的稳定性和迭代能力，开发者也可以自由选择开发技术。 k8s系统架构超强的横向扩展能力。   使用阿里云镜像安装K">
+<meta property="og:description" content="使用阿里云镜像安装Kubernetes 前期准备 安装Docker;修改docker镜像源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kubernetes.repo[kubernetes]name=Kubernetesbaseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kuberne">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/images/image-pull.png">
-<meta property="og:updated_time" content="2019-09-04T15:37:37.049Z">
+<meta property="og:updated_time" content="2019-09-22T10:10:20.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes">
-<meta name="twitter:description" content="Kubernetes是什么？  是一个全新的基于容器技术的分布式架构领先方案，并且是一个一站式的完备的分布式系统开发和支撑平台。   为什么要用Kubernetes？  IT行业从来都是新技术驱动。 全面拥抱微服务架构，微服务架构使得每个服务都可以独立开发，升级和扩展，因此系统具备很高的稳定性和迭代能力，开发者也可以自由选择开发技术。 k8s系统架构超强的横向扩展能力。   使用阿里云镜像安装K">
+<meta name="twitter:description" content="使用阿里云镜像安装Kubernetes 前期准备 安装Docker;修改docker镜像源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kubernetes.repo[kubernetes]name=Kubernetesbaseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kuberne">
 <meta name="twitter:image" content="http://yoursite.com/images/image-pull.png">
 
 
@@ -101,7 +101,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -146,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -185,9 +185,19 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br>
+            
+            About
           </a>
         </li>
       
@@ -195,7 +205,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-文章"></i> <br>
             
             Archives
           </a>
@@ -302,20 +312,7 @@
 
       
         <ul>
-<li><p>Kubernetes是什么？</p>
-<ul>
-<li>是一个全新的基于容器技术的分布式架构领先方案，并且是一个一站式的完备的分布式系统开发和支撑平台。</li>
-</ul>
-</li>
-<li><p>为什么要用Kubernetes？</p>
-<ul>
-<li>IT行业从来都是新技术驱动。</li>
-<li>全面拥抱微服务架构，微服务架构使得每个服务都可以独立开发，升级和扩展，因此系统具备很高的稳定性和迭代能力，开发者也可以自由选择开发技术。</li>
-<li>k8s系统架构超强的横向扩展能力。</li>
-</ul>
-</li>
-<li><p>使用阿里云镜像安装Kubernetes</p>
-<ul>
+<li>使用阿里云镜像安装Kubernetes<ul>
 <li>前期准备 安装Docker;<a href="https://www.kancloud.cn/hfpp2012/docker/467098" target="_blank" rel="noopener">修改docker镜像源</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">exclude=kube*</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -359,8 +356,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/22/hello-world/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/04/NET-Core-生成Nuget包/" rel="prev" title=".NET Core 生成Nuget包">
+                .NET Core 生成Nuget包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -429,7 +426,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

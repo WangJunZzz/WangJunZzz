@@ -95,7 +95,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -140,7 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
 
@@ -180,9 +180,19 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br>
+            
+            About
           </a>
         </li>
       
@@ -190,7 +200,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-文章"></i> <br>
             
             Archives
           </a>
@@ -215,6 +225,388 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Mysql-Beginner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/29/Mysql-Beginner/" itemprop="url">Mysql-Beginner</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-29T00:15:04+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li><p>字符转日期</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 日期2019-08-08 -&gt; 20190808  </span></span><br><span class="line">CAST(CURRENT_DATE() AS SIGNED)</span><br><span class="line"><span class="comment"># 时间 00:08:15 -&gt; 815</span></span><br><span class="line">CAST(CURRENT_TIME() AS SIGEND)</span><br><span class="line"><span class="comment"># 时间戳 2019-08-08 00:08:15</span></span><br><span class="line">CAST(NOW() AS SIGNED)</span><br><span class="line"><span class="comment"># 日期 2019-08-08 -&gt; 2020</span></span><br><span class="line">YEAR(CURRENT_DATE())</span><br><span class="line"><span class="comment"># 00:08:15 -&gt; 15</span></span><br><span class="line">SECOND(CURRENT_DATE())</span><br><span class="line"><span class="comment"># 时间转unix时间错</span></span><br><span class="line">UNIX_TIMESTAMP(NOW())</span><br><span class="line"><span class="comment"># 字符串转时间</span></span><br><span class="line">CAST('2019-08-08' AS DATE)</span><br><span class="line"><span class="comment"># 字符串转日期</span></span><br><span class="line">DATE_FROMAT(CURRENT_DATE(),'%Y-%m-%d')</span><br><span class="line"><span class="comment"># 获取日期</span></span><br><span class="line">DAYNAME(CURRENT_DATE())</span><br><span class="line">MONTH(CURRENT_DATE())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>聚合函数(常用于GROUP BY从句的SELECT查询中)</p>
+</li>
+</ul>
+<ol>
+<li>AVG(col)　　　　　　　　返回指定列的平均值</li>
+<li>COUNT(col)　　　　　　　返回指定列中非NULL值的个数</li>
+<li>MIN(col)　　　　　　　　返回指定列的最小值</li>
+<li>MAX(col)　　　　　　　　返回指定列的最大值</li>
+<li>SUM(col)　　　　　　　　返回指定列的所有值之和</li>
+<li>GROUP_CONCAT(col)　    返回由属于一组的列值连接组合而成的结果</li>
+</ol>
+<ul>
+<li>字符串函数</li>
+</ul>
+<ol>
+<li>CONCAT(s1,s2…,sn)　　       将s1,s2…,sn连接成字符串</li>
+<li>CONCAT_WS(sep,s1,s2…,sn)　　将s1,s2…,sn连接成字符串，并用sep字符间隔</li>
+<li>LEFT(str,x)　　　　　　　　    返回字符串str中最左边的x个字符</li>
+<li>RIGHT(str,x)　　　　　　　     返回字符串str中最右边的x个字符</li>
+</ol>
+<ul>
+<li>控制流函数</li>
+</ul>
+<ol>
+<li>CASE WHEN[test1] THEN [result1]…ELSE [default] END 如果testN是真，则返回resultN，否则返回default</li>
+<li>CASE [test] WHEN[val1] THEN [result]…ELSE [default] END 如果test和valN相等，则返回resultN，否则返回default</li>
+<li>IF(test,t,f) 如果test是真，返回t；否则返回 f</li>
+<li>IFNULL(arg1,arg2) 如果arg1不是空，返回arg1，否则返回arg2</li>
+<li>NULLIF(arg1,arg2) 如果arg1=arg2返回NULL；否则返回arg1</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/Consul/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/Consul/" itemprop="url">Consul</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T22:46:21+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微服务/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h3><ul>
+<li>Consul包含多个组件,但是作为一个整体,为你的基础设施提供服务发现和服务配置的工具。</li>
+</ul>
+<ol>
+<li>服务发现：Consul的客户端可提供一个服务，比如api或者mysql，另外一些客户端可使用Consul去发现一个指定的服务提供者，通过DNS或者Http应用程序很容易找到他依赖的服务。</li>
+<li>健康检查：Consul客户端可提供任意数量的健康检查，指定一个服务（比如一个api是否返回了200）或者使用本地节点（比如内存是否大于90%），这个信息可由opreator用来监视集群的健康，被服务发现组件用来避免将流量发送到不健康的主机。</li>
+<li>Key/Value存储：应用程序可根据自己需要使用的Consul的层级的Key/Value存储，比如动态配置，功能标记，协调，领袖选举等。</li>
+<li>多数据中心：Consul支持开箱即用的多数据中心，这意味着用户不需要担心建立额外的抽象层让业务扩展到多个区域，Consul面对DevOps和应用开发者友好，是他适合现代弹性的基础设置。</li>
+</ol>
+<h3 id="Consul使用场景"><a href="#Consul使用场景" class="headerlink" title="Consul使用场景"></a>Consul使用场景</h3><ol>
+<li>Docker 实例的注册与配置共享。</li>
+<li>Coreos 实例的注册与配置共享。</li>
+<li>SaaS 应用的配置共享、服务发现和健康检查。</li>
+<li>vitess 集群。</li>
+<li>与 confd 服务集成，动态生成 nginx 和 haproxy 配置文件。</li>
+</ol>
+<h3 id="Consul优势"><a href="#Consul优势" class="headerlink" title="Consul优势"></a>Consul优势</h3><ul>
+<li>市面现在有很多类似的软件比如：zookeeper 、Etcd、doozerd、eureka，Consul 相比这些软件有什么优势呢？</li>
+</ul>
+<ol>
+<li>使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft。</li>
+<li>支持 多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障，而其部署则需要考虑网络延迟，分片等情况等. zookeeper 和 etcd 均不提供多数据中心功能的支持。</li>
+<li>支持 健康检查。 etcd 不提供此功能。</li>
+<li>支持 HTTP、DNS 和 GPRS 协议接口。 zookeeper 的集成较为复杂，etcd 只支持 http 协议。</li>
+<li>官方提供 WEB管理界面，etcd 无此功能。</li>
+</ol>
+<h3 id="Glossary"><a href="#Glossary" class="headerlink" title="Glossary"></a>Glossary</h3><ol>
+<li>Client：表示 Consul 客户端模式，是 Consul 节点的一种模式，所有注册到 Client 节点的服务会被转发到 Server 。本身无状态不持久化如何数据。Client 通过 HTTP、DNS、GRPC 接口请求转发给局域网内的服务端集群。</li>
+<li>Server：表示 Consul 的服务端模式， Server 功能和 Client 都一样，不同的是 Server 持久化数据到本地。在局域网内与本地 Client 通讯，通过广域网与其他数据中心通讯。每个数据中心的 Server 数量推荐为 3 个或是 5 个。</li>
+<li>Server-Leader ：表示这个 Server 是它们的老大，它和其它 Server 不一样的一点是，它需要负责同步注册的信息给其它的 Server 节点，同时也要负责各个节点的健康监测。如果 Leader 宕机了，通数据中心的所有 Server 内部会使用 Raft 算法来在其中选取一个 Leader 出来。</li>
+<li>Agent ：Agent 是 Consul 的核心进程，Agent 的工作是维护成员关系信息、注册服务、健康检查、响应查询等等。Consul 集群的每一个节点都必须运行 agent 进程。</li>
+</ol>
+<h3 id="Consul的工作原理"><a href="#Consul的工作原理" class="headerlink" title="Consul的工作原理"></a>Consul的工作原理</h3><ol>
+<li>使用微服务架构。传统的单体架构不够灵活不能很好的适应变化，从而向微服务架构进行转换，而伴随着大量服务的出现，管理运维十分不便，于是开始搞一些自动化的策略，服务发现应运而生。但是引入服务发现就可能引入一些技术栈，增加系统总体的复杂度。<br><img src="/images/consul.png" alt></li>
+<li>在服务器Server1、Server2、Server3上分别部署了Consul Server，假设他们选举了Server2上的Consul Server节点为Leader.</li>
+<li>在服务器Server4和Server5上通过Consul Client分别注册Service A、B、C。服务注册到Consul可以通过HTTP API（8500端口）的方式，也可以通过Consul配置文件的方式。Consul Client可以认为是无状态的，它将注册信息通过RPC转发到Consul Server，服务信息保存在Server的各个节点中，并且通过Raft实现了强一致性。</li>
+<li>在服务器Server6中Program D需要访问Service B，这时候Program D首先访问本机Consul Client提供的HTTP API，本机Client会将请求转发到Consul Server，Consul Server查询到Service B当前的信息返回，最终Program D拿到了Service B的所有部署的IP和端口，然后就可以选择Service B的其中一个部署并向其发起请求了。如果服务发现采用的是DNS方式，则Program D中直接使用Service B的服务发现域名，域名解析请求首先到达本机DNS代理，然后转发到本机Consul Client，本机Client会将请求转发到Consul Server，Consul Server查询到Service B当前的信息返回，最终Program D拿到了Service B的某个部署的IP和端口。</li>
+</ol>
+<ul>
+<li><a href="http://blog.didispace.com/consul-service-discovery-exp" target="_blank" rel="noopener">http://blog.didispace.com/consul-service-discovery-exp</a></li>
+</ul>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ol>
+<li>advertise：通知展现地址用来改变我们给集群中的其他节点展现的地址，一般情况下-bind地址就是展现地址。</li>
+<li>bootstrap：    用来控制一个server是否在bootstrap模式，在一个datacenter中只能有一个server处于bootstrap模式，当一个server处于bootstrap模式时，可以自己选举为raft leader。</li>
+<li>bootstrap-expect：在一个datacenter中期望提供的server节点数目，当该值提供的时候，consul一直等到达到指定sever数目的时候才会引导整个集群，该标记不能和bootstrap共用。</li>
+<li>bind：该地址用来在集群内部的通讯IP地址，集群内的所有节点到地址都必须是可达的，默认是0.0.0.0。</li>
+<li>client：consul绑定在哪个client地址上，这个地址提供HTTP、DNS、RPC等服务，默认是127.0.0.1。</li>
+<li>config-file：明确的指定要加载哪个配置文件。</li>
+<li>config-dir：配置文件目录，里面所有以.json结尾的文件都会被加载。</li>
+<li>data-dir：提供一个目录用来存放agent的状态，所有的agent允许都需要该目录，该目录必须是稳定的，系统重启后都继续存在。</li>
+<li>dc:该标记控制agent允许的datacenter的名称，默认是dc1。</li>
+<li>encrypt：    指定secret key，使consul在通讯时进行加密，key可以通过consul keygen生成，同一个集群中的节点必须使用相同的key。</li>
+<li>join：加入一个已经启动的agent的ip地址，可以多次指定多个agent的地址。如果consul不能加入任何指定的地址中，则agent会启动失败，默认agent启动时不会加入任何节点。</li>
+<li>retry-interval：两次join之间的时间间隔，默认是30s。</li>
+<li>retry-max：尝试重复join的次数，默认是0，也就是无限次尝试。</li>
+<li>log-level：consul agent启动后显示的日志信息级别。默认是info，可选：trace、debug、info、warn、err。</li>
+<li>node：节点在集群中的名称，在一个集群中必须是唯一的，默认是该节点的主机名。</li>
+<li>protocol：consul使用的协议版本。</li>
+<li>rejoin：使consul忽略先前的离开，在再次启动后仍旧尝试加入集群中。</li>
+<li>server：定义agent运行在server模式，每个集群至少有一个server，建议每个集群的server不要超过5个。</li>
+<li>syslog：开启系统日志功能，只在linux/osx上生效。</li>
+<li>pid-file：提供一个路径来存放pid文件，可以使用该文件进行SIGINT/SIGHUP(关闭/更新)agent。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动Consul和web管理</span></span><br><span class="line">docker run -d -p 8001:8500 --name consulserver-01 consul agent -server -bootstrap -ui -node=Node-01 -client=<span class="string">'0.0.0.0'</span> -data-dir ~/consul/data -config-dir ~/consul/config</span><br><span class="line">docker run -d  --name consulserver-02 consul agent -server -bootstrap -ui -node=Node-02 -client=<span class="string">'0.0.0.0'</span> -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join=<span class="string">'172.17.0.2'</span></span><br><span class="line">docker run -d  --name consulserver-03 consul agent -server -bootstrap -ui -node=Node-03 -client=<span class="string">'0.0.0.0'</span> -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join=<span class="string">'172.17.0.2'</span></span><br><span class="line">docker run -d  --name consulclient-01 consul agent -client -bootstrap -ui -node=Node-client-01 -client=<span class="string">'0.0.0.0'</span> -data-dir /var/vdb1/wangjun/consul/data -config-dir /var/vdb1/wangjun/consul/config -join=<span class="string">'172.17.0.2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看consul信息</span></span><br><span class="line">docker <span class="built_in">exec</span> consul_server_1 consul members</span><br><span class="line"><span class="comment">#Node  Address          Status  Type    Build  Protocol  DC   Segment</span></span><br><span class="line"><span class="comment">#1     172.17.0.2:8301  alive   server  1.5.2  2         dc1  &lt;all&gt;</span></span><br><span class="line"><span class="comment">#通过命令获取到引导 Consul 的 Ip 地址 172.17.0.2 </span></span><br><span class="line"><span class="comment">#加入到集群， 命名为 -node=2 、-node=3</span></span><br><span class="line"> docker run -d  --name=consul_server_2 consul agent -server -bootstrap -ui -node=2 -client=<span class="string">'0.0.0.0'</span> -join=<span class="string">'172.17.0.2'</span></span><br><span class="line"> docker run -d  --name=consul_server_3 consul agent -server -bootstrap -ui -node=3 -client=<span class="string">'0.0.0.0'</span> -join=<span class="string">'172.17.0.2'</span></span><br><span class="line"> <span class="comment"># 添加Client</span></span><br><span class="line"> docker run -d  --name=consul_server_4 consul agent -client -node=4 -join=<span class="string">'172.17.0.2'</span> -client=<span class="string">'0.0.0.0'</span></span><br><span class="line"> <span class="comment"># Client需要集群继续添加node5，6就好</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="/images/node.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -811,7 +1203,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
