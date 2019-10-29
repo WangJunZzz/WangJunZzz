@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="微服务架构图    配置中心背景随着业务的发展、微服务架构的升级，服务的数量、程序的配置日益增多（各种微服务、各种服务器地址、各种参数），传统的配置文件方式和数据库的方式已无法满足开发人员对配置管理的要求：  安全性：配置跟随源代码保存在代码库中，容易造成配置泄漏； 时效性：修改配置，需要重启服务才能生效； 局限性：无法支持动态调整：例如日志开关、功能开关；  因此，我们需要配置中心来统一管理配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务架构">
+<meta property="og:url" content="https://github.com/WangJunZzz/2019/09/23/微服务/微服务架构/index.html">
+<meta property="og:site_name" content="你好,WangJunZzz">
+<meta property="og:description" content="微服务架构图    配置中心背景随着业务的发展、微服务架构的升级，服务的数量、程序的配置日益增多（各种微服务、各种服务器地址、各种参数），传统的配置文件方式和数据库的方式已无法满足开发人员对配置管理的要求：  安全性：配置跟随源代码保存在代码库中，容易造成配置泄漏； 时效性：修改配置，需要重启服务才能生效； 局限性：无法支持动态调整：例如日志开关、功能开关；  因此，我们需要配置中心来统一管理配置">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/images/eShop.png">
+<meta property="og:image" content="https://github.com/images/cap.png">
+<meta property="og:image" content="https://github.com/images/job01.png">
+<meta property="og:image" content="https://github.com/images/job02.png">
+<meta property="og:updated_time" content="2019-10-29T11:15:23.142Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微服务架构">
+<meta name="twitter:description" content="微服务架构图    配置中心背景随着业务的发展、微服务架构的升级，服务的数量、程序的配置日益增多（各种微服务、各种服务器地址、各种参数），传统的配置文件方式和数据库的方式已无法满足开发人员对配置管理的要求：  安全性：配置跟随源代码保存在代码库中，容易造成配置泄漏； 时效性：修改配置，需要重启服务才能生效； 局限性：无法支持动态调整：例如日志开关、功能开关；  因此，我们需要配置中心来统一管理配置">
+<meta name="twitter:image" content="https://github.com/images/eShop.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/WangJunZzz/2019/09/23/微服务/微服务架构/">
+
+
+
+
+
+  <title>微服务架构 | 你好,WangJunZzz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">你好,WangJunZzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home  //首页"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user  //关于"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags  //标签"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th   //分类"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive //归档"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar   //日程表"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap   //站点地图"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/09/23/微服务/微服务架构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WangJunZzz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你好,WangJunZzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微服务架构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T09:48:15+08:00">
+                2019-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/23/微服务/微服务架构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/微服务/微服务架构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="微服务架构图"><a href="#微服务架构图" class="headerlink" title="微服务架构图"></a>微服务架构图</h3><p>   <img src="/images/eShop.png" alt></p>
+<h3 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>随着业务的发展、微服务架构的升级，服务的数量、程序的配置日益增多（各种微服务、各种服务器地址、各种参数），传统的配置文件方式和数据库的方式已无法满足开发人员对配置管理的要求：</p>
+<ul>
+<li>安全性：配置跟随源代码保存在代码库中，容易造成配置泄漏；</li>
+<li>时效性：修改配置，需要重启服务才能生效；</li>
+<li>局限性：无法支持动态调整：例如日志开关、功能开关；</li>
+</ul>
+<p>因此，我们需要配置中心来统一管理配置！把业务开发者从复杂以及繁琐的配置中解脱出来，只需专注于业务代码本身，从而能够显著提升开发以及运维效率。同时将配置和发布包解藕也进一步提升发布的成功率。</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。  </p>
+<h4 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h4><h5 id="统一管理不同环境、不同集群的配置"><a href="#统一管理不同环境、不同集群的配置" class="headerlink" title="统一管理不同环境、不同集群的配置"></a>统一管理不同环境、不同集群的配置</h5><ul>
+<li>Apollo提供了一个统一界面集中式管理不同环境（environment）、不同集群（cluster）、不同命名空间（namespace）的配置。</li>
+<li>同一份代码部署在不同的集群，可以有不同的配置，比如zk的地址等。</li>
+<li>通过命名空间（namespace）可以很方便的支持多个不同应用共享同一份配置，同时还允许应用对共享的配置进行覆盖。<h5 id="配置修改实时生效（热发布）"><a href="#配置修改实时生效（热发布）" class="headerlink" title="配置修改实时生效（热发布）"></a>配置修改实时生效（热发布）</h5></li>
+<li>用户在Apollo修改完配置并发布后，客户端能实时（1秒）接收到最新的配置，并通知到应用程序。<h5 id="灰度发布"><a href="#灰度发布" class="headerlink" title="灰度发布"></a>灰度发布</h5></li>
+<li>支持配置的灰度发布，比如点了发布后，只对部分应用实例生效，等观察一段时间没问题后再推给所有应用实例。</li>
+</ul>
+<h4 id="携程Apollo再-Net-FrameWork上的使用"><a href="#携程Apollo再-Net-FrameWork上的使用" class="headerlink" title="携程Apollo再.Net FrameWork上的使用"></a>携程Apollo再.Net FrameWork上的使用</h4><pre><code>- 新建一个.Net Framework4.7.2的项目
+- 添加Com.Ctrip.Framework.Apollo.ConfigurationManager包引用
+- 再Web.config的appSettings目录下添加</code></pre><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">add</span> key=<span class="string">"Apollo.AppId"</span> <span class="keyword">value</span>=<span class="string">"framework.web"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">add</span> key=<span class="string">"Apollo.MetaServer"</span> <span class="keyword">value</span>=<span class="string">"http://192.168.19.48:8080/"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>- 获取配置文件</code></pre><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ApolloConfigurationManager 不过这个是过时的</span></span><br><span class="line">IConfig config = <span class="keyword">await</span> ApolloConfigurationManager.GetAppConfig();</span><br><span class="line"><span class="comment">// 获取apollo配置好的连接字符串</span></span><br><span class="line"><span class="keyword">return</span> config.GetProperty(<span class="string">"ConnectionStrings"</span>, <span class="keyword">string</span>.Empty);</span><br></pre></td></tr></table></figure>
+
+<h4 id="携程Apollo再-NetCore2-x上的使用"><a href="#携程Apollo再-NetCore2-x上的使用" class="headerlink" title="携程Apollo再.NetCore2.x上的使用"></a>携程Apollo再.NetCore2.x上的使用</h4><pre><code>- 新建一个.NetCore2.2项目
+- 添加Com.Ctrip.Framework.Apollo.Configuration包引用
+- 配置appsettings.json</code></pre><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"apollo"</span>: &#123;</span><br><span class="line">    <span class="attr">"AppId"</span>: <span class="string">"fanyouvip.com"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// appsettings.development.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"apollo"</span>: &#123;</span><br><span class="line">    <span class="attr">"MetaServer"</span>: <span class="string">"http://192.168.19.48:8080"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>- 在Program-&gt;Main函数中添加</code></pre><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IWebHostBuilder <span class="title">CreateWebHostBuilder</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> WebHost.CreateDefaultBuilder(args)</span><br><span class="line">         .ConfigureAppConfiguration(builder =&gt; builder</span><br><span class="line">           .AddApollo(builder.Build().GetSection(<span class="string">"apollo"</span>))</span><br><span class="line">           <span class="comment">//.AddNamespace("fanyou") // 命名空间</span></span><br><span class="line">           .AddDefault())</span><br><span class="line">           .UseStartup&lt;Startup&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用方式一-注入IConfiguration-："><a href="#使用方式一-注入IConfiguration-：" class="headerlink" title="使用方式一(注入IConfiguration)："></a>使用方式一(注入IConfiguration)：</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Route(<span class="meta-string">"api/[controller]"</span>)</span>]</span><br><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ValuesController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IConfiguration configuration;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValuesController</span>(<span class="params">IConfiguration config</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        configuration = config;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// GET api/values</span></span><br><span class="line">    [<span class="meta">HttpGet</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Get</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> configuration[<span class="string">"Test"</span>].ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用方式二-POCO"><a href="#使用方式二-POCO" class="headerlink" title="使用方式二(POCO):"></a>使用方式二(POCO):</h5><pre><code>- 添加Tuhu.Extensions.Configuration.ValueBinder.Json包引用</code></pre><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在apollo中配置文件是Json格式。项目中建立对于的实体</span></span><br><span class="line">services.ConfigureJsonValue&lt;ConfigMsg&gt;(Configuration.GetSection(<span class="string">"Test"</span>));</span><br><span class="line"><span class="comment">// 获取配置文件信息</span></span><br><span class="line">[<span class="meta">Route(<span class="meta-string">"api/[controller]"</span>)</span>]</span><br><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ValuesController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> IOptions&lt;ConfigMsg&gt; config;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValuesController</span>(<span class="params">IOptions&lt;ConfigMsg&gt; configMsg</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        config = configMsg.Value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">HttpGet</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Get</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> config.request_timeout;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/WangJunZzz/Apollo.git">Source Code</a><br><a href="https://github.com/ctripcorp/apollo">Apollo Github</a><br><a href="https://www.bookstack.cn/read/ctripcorp-apollo/99fb25aaf39abc3c.md" target="_blank" rel="noopener">Developor Guide</a></p>
+<hr>
+<h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3><p><a href="https://help.aliyun.com/document_detail/29464.html?spm=a2c4g.11186623.6.542.14bc6d0eGDQwJt" target="_blank" rel="noopener">阿里云API网关文档</a></p>
+<pre><code>阿里云API 网关为您提供完整的 API 托管服务，辅助用户将能力、服务、数据以 API 的形式开放给合作伴。
+阿里云API 网关提供防攻击、防重放、请求加密、身份认证、权限管理、流量控制等多重手段保证 API 全，降低 API 开放风险。
+提供 API 定义、测试、发布、下线等全生命周期管理，并生成 SDK、API 说明文档，提升 API 管理、迭代效率。
+提供便捷的监控、报警、分析、API 市场等运维、运营工具，降低 API 运营、维护成本。</code></pre><h4 id="请求签名说明文档"><a href="#请求签名说明文档" class="headerlink" title="请求签名说明文档"></a>请求签名说明文档</h4><h5 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h5><pre><code>【必选】X-Ca-Key：AppKey
+【必选】X-Ca-Signature：签名字符串
+【可选】X-Ca-Timestamp：API 调用者传递时间戳，值为当前时间的毫秒数，也就是从1970  
+ 年1月1日起至今的时间转换为毫秒，时间戳有效时间为15分钟
+【可选】X-Ca-Nonce：API 调用者生成的 UUID，结合时间戳防重放
+【可选】Content-MD5 当请求 Body 非 Form 表单时，可以计算 Body 的 MD5 值传递给云网  
+ 关进行 Body MD5 校验
+【可选】X-Ca-Stage请求 API 所属 Stage，目前仅支持 TEST 、PRE 和 RELEASE，默认  
+ RELEASE，若您调用的 API 不在线上环境，请一定要指定该参数的值，否则会报 URL 错误</code></pre><h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># npm install aliyun-api-gateway -S</span><br><span class="line"># 在main.js中</span><br><span class="line">const Client = require(&apos;aliyun-api-gateway&apos;).Client;</span><br><span class="line">const client = new Client(&apos;appkey&apos;, &apos;appsecret&apos;);</span><br><span class="line">Vue.prototype.client = client</span><br><span class="line"># GET</span><br><span class="line">let opts = &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,</span><br><span class="line">    &quot;X-Ca-Stage&quot;: this.env</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">this.client</span><br><span class="line">  .get(</span><br><span class="line">    &quot;http://api.permit.fanyouvip.com/api/Public/Role/xx/xx&quot;,</span><br><span class="line">    opts</span><br><span class="line">  )</span><br><span class="line">  .then(e =&gt; &#123;</span><br><span class="line">    console.log(e);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(err =&gt; &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">    console.log(err.code);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"># POST</span><br><span class="line">let opts = &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,</span><br><span class="line">    &quot;X-Ca-Stage&quot;: this.env</span><br><span class="line">  &#125;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    userName: &quot;admin&quot;,</span><br><span class="line">    password: &quot;123&quot;,</span><br><span class="line">    systemId: &quot;e92983fd6e4c4f598b1e7dfb9d636501&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">this.client</span><br><span class="line">  .post(&quot;http://api.permit.fanyouvip.com/api/Public/Login&quot;, opts)</span><br><span class="line">  .then(res =&gt; &#123;</span><br><span class="line">    console.log(res);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(err =&gt; &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">    console.log(err.code);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Vue中有一个小问题，需要注释调HTTPX中的一段代码，<a href="https://github.com/aliyun/api-gateway-nodejs-sdk/issues/27">请参考</a>。</p>
+<h4 id="Net-Core-2-x"><a href="#Net-Core-2-x" class="headerlink" title=".Net Core 2.x"></a>.Net Core 2.x</h4><ul>
+<li>整理了一下阿里云官网提供的SDK文档，发布到私有的Nuget服务器上。</li>
+<li>安装 Fairhr.ApiGetWay</li>
+<li>在StartUp -&gt; ConfigureServices</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">services.AddFarihrGetWay(options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    options.AppKey = <span class="string">"AppKey"</span>;</span><br><span class="line">    options.AppSecret = <span class="string">"AppSecret"</span>;</span><br><span class="line">    <span class="comment">// api网关地址</span></span><br><span class="line">    options.Host = <span class="string">"api网关地址"</span>;</span><br><span class="line">    <span class="comment">// 配置环境变量</span></span><br><span class="line">    options.Environment = <span class="string">"TEST</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 调用api</span></span><br><span class="line"><span class="string">string result = string.Empty;</span></span><br><span class="line"><span class="string">using (HttpWebResponse response =</span></span><br><span class="line"><span class="string">    HttpCoreUtil.HttpGet("</span>/Social/Policy/repair/month/<span class="number">2341</span><span class="string">"))</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    Stream st = response.GetResponseStream();</span></span><br><span class="line"><span class="string">    StreamReader reader = new StreamReader(st, Encoding.GetEncoding("</span>utf<span class="number">-8</span><span class="string">");</span></span><br><span class="line"><span class="string">    result = reader.ReadToEnd();</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Net-Framework"><a href="#Net-Framework" class="headerlink" title=".Net Framework"></a>.Net Framework</h4><ul>
+<li>整理了一下阿里云官网提供的SDK文档，发布到私有的Nuget服务器上。</li>
+<li>安装 Fairhr.ApiGetWay</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> result = <span class="keyword">string</span>.Empty;</span><br><span class="line"><span class="keyword">using</span> (HttpWebResponse response = HttpFrameWorkUtil.HttpGet(<span class="string">"api网关地址"</span>, Path, <span class="string">"AppKey"</span>,<span class="string">"AppSecret"</span>))</span><br><span class="line">&#123;</span><br><span class="line">    Stream st = response.GetResponseStream();</span><br><span class="line">    StreamReader reader = <span class="keyword">new</span> StreamReader(st, Encoding.GetEncoding(<span class="string">"utf-);</span></span><br><span class="line"><span class="string">    result = reader.ReadToEnd().ToString();</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li><p>Header 部分。其中 X-Ca开头的均为网关返回(在 Header 中获得 X-Ca-Error-Message 可以基本明确报错原因，而 X-Ca-Request-Id 可以用于提供给这边的支持人员，供支持人员搜索日志)。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X-Ca-Request-Id: <span class="number">7</span>AD052CB-EE8B<span class="number">-4</span>DFD-BBAF-EFB340E0A5AF </span><br><span class="line"><span class="comment">//请求唯一ID，请求一旦进入API网关应用后，API网关就会生成请求ID并通过响应头返回给客户端.</span></span><br><span class="line"><span class="comment">//建议客户端与后端服务都记录此请求ID，可用于问题排查与跟踪</span></span><br><span class="line">X-Ca-Error-Message: Invalid Url  </span><br><span class="line"><span class="comment">//API网关返回的错误消息，当请求出现错误时API网关会通过响应头将错误消息返回给客户端</span></span><br><span class="line">X-Ca-Debug-Info: &#123;<span class="string">"ServiceLatency"</span>:<span class="number">0</span>,<span class="string">"TotalLatency"</span>:<span class="number">2</span>&#125;  </span><br><span class="line"><span class="comment">//当打开Debug模式后会返回Debug信息，此信息后期可能会有变更，仅用做联调阶段参考</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值为空。（HTTP/HTTPS 请求的返回结果有 HttpCode、Header、Body 三部分。当请求报错时，由于没有进入业务逻辑，所以返回的 Body 可能为空，表现为“返回值为空”，但实际上，重要信息都在 Header 里面。）</p>
+</li>
+</ol>
+<hr>
+<h3 id="服务注册和服务发现"><a href="#服务注册和服务发现" class="headerlink" title="服务注册和服务发现"></a>服务注册和服务发现</h3><h5 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h5><blockquote>
+<p>Install-Package Ocelot<br>Install-Package Ocelot.Provider.Consul</p>
+</blockquote>
+<ul>
+<li>添加Ocelot.json</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"ReRoutes"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"DownstreamPathTemplate"</span>: <span class="string">"/&#123;url&#125;"</span>, </span><br><span class="line">      <span class="attr">"DownstreamScheme"</span>: <span class="string">"http"</span>,</span><br><span class="line">      <span class="attr">"DownstreamHostAndPorts"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"Host"</span>: <span class="string">"localhost"</span>,</span><br><span class="line">          <span class="attr">"Port"</span>: <span class="number">5001</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"UpstreamPathTemplate"</span>: <span class="string">"/&#123;url&#125;"</span>,</span><br><span class="line">      <span class="attr">"UpstreamHttpMethod"</span>: [ <span class="string">"Get"</span>, <span class="string">"Post"</span>, <span class="string">"Put"</span>, <span class="string">"Delete"</span>, <span class="string">"Patch"</span> ],</span><br><span class="line">      "AuthenticationOptions": &#123;  // 添加IdentityServer4</span><br><span class="line">        "AuthenticationProviderKey": "ocelotKey",</span><br><span class="line">        "AllowedScopes": []</span><br><span class="line">      &#125;,</span><br><span class="line">      "ServiceName": "order",     // 使用consul的时候配置，consul的服务名称</span><br><span class="line">      "LoadBalancerOptions": &#123;    // 使用consul的时候配置</span><br><span class="line">        "Type": "LeastConnection" // 使用consul的时候配置，RoundRobin（轮询方式）和LeastConnection（最小连接）</span><br><span class="line">      &#125;,                          // 使用consul的时候配置</span><br><span class="line">      "UseServiceDiscovery": true // 使用consul的时候配置，是否启用服务发现</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"DownstreamPathTemplate"</span>: <span class="string">"/&#123;url&#125;"</span>,</span><br><span class="line">      <span class="attr">"DownstreamScheme"</span>: <span class="string">"http"</span>,</span><br><span class="line">      <span class="attr">"DownstreamHostAndPorts"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"Host"</span>: <span class="string">"localhost"</span>,</span><br><span class="line">          <span class="attr">"Port"</span>: <span class="number">5002</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"UpstreamPathTemplate"</span>: <span class="string">"/api/&#123;url&#125;"</span>,</span><br><span class="line">      <span class="attr">"UpstreamHttpMethod"</span>: [ <span class="string">"Get"</span>, <span class="string">"Post"</span>, <span class="string">"Put"</span>, <span class="string">"Delete"</span>, <span class="string">"Patch"</span> ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  "GlobalConfiguration": &#123; </span><br><span class="line">    "BaseUrl": "http://localhost:5000",</span><br><span class="line">    "ServiceDiscoveryProvider": &#123; //使用consul的时候配置，配置服务发现</span><br><span class="line">      "Host": "localhost",        //使用consul的时候配置，主机地址</span><br><span class="line">      "Port": 8500,               //使用consul的时候配置，端口</span><br><span class="line">      "Type": "Consul",           //使用consul的时候配置</span><br><span class="line">      "PollingInterval": 100      //使用consul的时候配置，轮询的间隔时间，以毫秒为单位。</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改StartUp</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)</span><br><span class="line">.AddIdentityServerAuthentication(<span class="string">"ocelotKey"</span>, options =&gt;</span><br><span class="line"> &#123;</span><br><span class="line">     options.Authority = <span class="string">"http://dev.oauth.fanyouvip.com"</span>;</span><br><span class="line">     options.RequireHttpsMetadata = <span class="literal">false</span>;</span><br><span class="line">     options.ApiName = <span class="string">"apigetway"</span>;</span><br><span class="line">     options.SupportedTokens = SupportedTokens.Both;</span><br><span class="line">     options.ApiSecret = <span class="string">"secret"</span>;</span><br><span class="line">&#125;);</span><br><span class="line">services.AddOcelot(<span class="keyword">new</span> ConfigurationBuilder().AddJsonFile(<span class="string">"ocelot.json"</span>).Build()).AddConsul();</span><br><span class="line">app.UseAuthentication().UseOcelot().Wait();</span><br><span class="line"></span><br><span class="line"><span class="meta">#### 服务注册</span></span><br><span class="line"></span><br><span class="line">``` json</span><br><span class="line"><span class="comment">//注册地址，[PUT] http://localhost:8500/v1/agent/service/register  </span></span><br><span class="line"><span class="comment">// Body</span></span><br><span class="line"> &#123;</span><br><span class="line">    <span class="string">"ID"</span>: <span class="string">"order001"</span>,</span><br><span class="line">    <span class="string">"Name"</span>: <span class="string">"order"</span>,</span><br><span class="line">    <span class="string">"Tags"</span>: [</span><br><span class="line">    <span class="string">"order"</span>,</span><br><span class="line">    <span class="string">"v1"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"Address"</span>: <span class="string">"localhost"</span>,</span><br><span class="line">    <span class="string">"Port"</span>: <span class="number">5001</span>,</span><br><span class="line">    <span class="string">"EnableTagOverride"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"Check"</span>: &#123;</span><br><span class="line">    <span class="string">"DeregisterCriticalServiceAfter"</span>: <span class="string">"12h"</span>,</span><br><span class="line">    <span class="string">"HTTP"</span>: <span class="string">"http://localhost:5001/health"</span>,</span><br><span class="line">    <span class="string">"Interval"</span>: <span class="string">"1s"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/WangJunZzz/ApiGetWay.Ocelot">Source Code</a><br><a href="https://ocelot.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Ocelot Doc</a><br><a href="https://www.consul.io/docs/index.html" target="_blank" rel="noopener">Consul Doc</a></p>
+<h2 id="服务注册"><a href="#服务注册" class="headerlink" title="服务注册"></a><a href="http://blog.itpub.net/31499124/viewspace-2640681/" target="_blank" rel="noopener">服务注册</a></h2><h3 id="应用程序设计"><a href="#应用程序设计" class="headerlink" title="应用程序设计"></a>应用程序设计</h3><h4 id="什么是分布式事务"><a href="#什么是分布式事务" class="headerlink" title="什么是分布式事务"></a>什么是分布式事务</h4><p>随着微服务架构的普及，一个大型业务系统往往由若干个子系统构成，这些子系统又拥有各自独立的数据库。往往一个业务流程需要由多个子系统共同完成，而且这些操作可能需要在一个事务中完成。在微服务系统中，这些业务场景是普遍存在的。此时，我们就需要在数据库之上通过某种手段，实现支持跨数据库的事务支持，这也就是大家常说的“分布式事务”。</p>
+<h4 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a>CAP理论</h4><ul>
+<li><p>CAP理论说的是：在一个分布式系统中，最多只能满足C、A、P中的两个需求。</p>
+</li>
+<li><p>CAP的含义：<br>  C：Consistency 一致性 同一数据的多个副本是否实时相同。<br>  A：Availability 可用性 可用性：一定时间内 &amp; 系统返回一个明确的结果 则称为该系统可用。<br>  P: Partition tolerance 分区容错性 将同一服务分布在多个系统中，从而保证某一个系统宕机，仍然有其他系统提供相同的服务。</p>
+</li>
+<li><p>对于一个业务系统来说，可用性和分区容错性是必须要满足的两个条件，并且这两者是相辅相成的。业务系统之所以使用分布式系统，主要原因有两个：<br>  提升整体性能 当业务量猛增，单个服务器已经无法满足我们的业务需求的时候，就需要使用分布式系统，使用多个节点提供相同的功能，从而整体上提升系统的性能，这就是使用分布式系统的第一个原因。<br>  实现分区容错性 单一节点 或 多个节点处于相同的网络环境下，那么会存在一定的风险，万一该机房断电、该地区发生自然灾害，那么业务系统就全面瘫痪了。为了防止这一问题，采用分布式系统，将多个子系统分布在不同的地域、不同的机房中，从而保证系统高可用性。</p>
+</li>
+</ul>
+<h4 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h4><p>CAP理论告诉我们一个悲惨但不得不接受的事实——我们只能在C、A、P中选择两个条件。而对于业务系统而言，我们往往选择牺牲一致性来换取系统的可用性和分区容错性。不过这里要指出的是，所谓的“牺牲一致性”并不是完全放弃数据一致性，而是牺牲强一致性换取弱一致性。<br>    BA：Basic Available 基本可;整个系统在某些不可抗力的情况下，仍然能够保证“可用性”，即一定时间内仍然能够返回一个明确的结果。<br>    S：Soft State：柔性状态 同一数据的不同副本的状态，可以不需要实时一致。<br>    E：Eventual Consisstency：最终一致性 同一数据的不同副本的状态，可以不需要实时一致，但一定要保证经过一定时间后仍然是一致的。</p>
+<h4 id="基于可靠消息服务的分布式事务"><a href="#基于可靠消息服务的分布式事务" class="headerlink" title="基于可靠消息服务的分布式事务"></a>基于可靠消息服务的分布式事务</h4><p>Dotnetcore.CAP 是一个基于 .NET Standard 的 C# 库，它是一种处理分布式事务的解决方案，同样具有 EventBus 的功能，它具有轻量级、易使用、高性能等特点。</p>
+<h5 id="CAP架构图"><a href="#CAP架构图" class="headerlink" title="CAP架构图"></a>CAP架构图</h5><p> <img src="/images/cap.png" alt></p>
+<p><a href="https://github.com/dotnetcore/CAP">DotNetCore.CAP Source Code</a><br><a href="https://github.com/WangJunZzz/Cap">CAP Demo Source Code</a></p>
+<hr>
+<h3 id="任务调度中心"><a href="#任务调度中心" class="headerlink" title="任务调度中心"></a>任务调度中心</h3><h4 id="Hangfire"><a href="#Hangfire" class="headerlink" title="Hangfire"></a>Hangfire</h4><ul>
+<li>新建项目，添加一下包</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hangfire.HttpJob</span><br><span class="line">Hangfire.MySqlStorage</span><br><span class="line">Hangfire.Dashboard.BasicAuthorization</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改Startup.cs</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ConfigureServices</span></span><br><span class="line">services.AddHangfire(ConfigurationHangfire);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Configure</span></span><br><span class="line"><span class="comment">// 中文面板</span></span><br><span class="line">System.Threading.Thread.CurrentThread.CurrentUICulture = <span class="keyword">new</span> System.Globalization.CultureInfo(<span class="string">"zh-</span></span><br><span class="line"><span class="string">app.UseHangfireServer(new BackgroundJobServerOptions()</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    // queue name参数只能由小写字母、数字、下划线和破折号（自1.7.6起）字符组成。</span></span><br><span class="line"><span class="string">    Queues = Configuration["</span>queue<span class="string">"].Split(new char[','], StringSplitOptions.RemoveEmptyEntries)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//只读面板，只能读取不能操作</span></span><br><span class="line"><span class="string">app.UseHangfireDashboard("</span>/read<span class="string">", readOpti</span></span><br><span class="line"><span class="string">// 管理员面板</span></span><br><span class="line"><span class="string">app.UseHangfireDashboard("</span>/jobs<span class="string">", adminOptions);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//Hangfire配置 https://github.com/yuzd/Hangfire.HttpJob/wiki</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">private DashboardOptions adminOptions = new DashboardOptions()</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    DisplayStorageConnectionString = false,</span></span><br><span class="line"><span class="string">    IsReadOnlyFunc = context =&gt; false,</span></span><br><span class="line"><span class="string">    IgnoreAntiforgeryToken = true,</span></span><br><span class="line"><span class="string">    Authorization = new[] &#123; new BasicAuthAuthorizationFilter(new BasicAuthAuthorizationFilterOptions() &#123;</span></span><br><span class="line"><span class="string">    RequireSsl=false,</span></span><br><span class="line"><span class="string">    SslRedirect=false,</span></span><br><span class="line"><span class="string">    LoginCaseSensitive=true,</span></span><br><span class="line"><span class="string">    Users=new []&#123;</span></span><br><span class="line"><span class="string">         new BasicAuthAuthorizationUser</span></span><br><span class="line"><span class="string">         &#123;</span></span><br><span class="line"><span class="string">            Login="</span>admin<span class="string">",</span></span><br><span class="line"><span class="string">            PasswordClear="</span><span class="number">123</span><span class="string">"</span></span><br><span class="line"><span class="string">         &#125;,</span></span><br><span class="line"><span class="string">         new BasicAuthAuthorizationUser</span></span><br><span class="line"><span class="string">         &#123;</span></span><br><span class="line"><span class="string">            Login="</span>fanyou<span class="string">",</span></span><br><span class="line"><span class="string">            PasswordClear="</span><span class="number">123</span><span class="string">"</span></span><br><span class="line"><span class="string">         &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    &#125;)&#125;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">private DashboardOptions readOptions = new DashboardOptions()</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    IgnoreAntiforgeryToken = true,</span></span><br><span class="line"><span class="string">    DisplayStorageConnectionString = false,</span></span><br><span class="line"><span class="string">    IsReadOnlyFunc = context =&gt; true</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">private void ConfigurationHangfire(IGlobalConfiguration globalConfiguration)</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    globalConfiguration.UseStorage(</span></span><br><span class="line"><span class="string">        new MySqlStorage(Configuration["</span>jobdb<span class="string">"], new MySqlStorageOptions()</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">            QueuePollInterval = TimeSpan.FromSeconds(15),</span></span><br><span class="line"><span class="string">            JobExpirationCheckInterval = TimeSpan.FromHours(1),</span></span><br><span class="line"><span class="string">            CountersAggregateInterval = TimeSpan.FromMinutes(5),</span></span><br><span class="line"><span class="string">            PrepareSchemaIfNecessary = true,</span></span><br><span class="line"><span class="string">            DashboardJobListLimit = 50000,</span></span><br><span class="line"><span class="string">            TransactionTimeout = TimeSpan.FromMinutes(2),</span></span><br><span class="line"><span class="string">            TablesPrefix = "</span>Fairhr_<span class="string">"</span></span><br><span class="line"><span class="string">        &#125;))</span></span><br><span class="line"><span class="string">        .UseConsole()</span></span><br><span class="line"><span class="string">        .UseHangfireHttpJob(new HangfireHttpJobOptions()</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">            DashboardName = "</span>泛亚统一任务调度平台<span class="string">",</span></span><br><span class="line"><span class="string">            DashboardTitle = "</span>调度平台<span class="string">",</span></span><br><span class="line"><span class="string">            DashboardFooter = string.Empty,</span></span><br><span class="line"><span class="string">            MailOption = new MailOption()</span></span><br><span class="line"><span class="string">            &#123;</span></span><br><span class="line"><span class="string">                Server = "</span>smtp.qq.com<span class="string">",</span></span><br><span class="line"><span class="string">                Port = 465,</span></span><br><span class="line"><span class="string">                UseSsl = true,</span></span><br><span class="line"><span class="string">                User = "</span><span class="number">510423039</span>@qq.com<span class="string">",</span></span><br><span class="line"><span class="string">                Password = "</span>vkskogjacsqabjgd<span class="string">"</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在任务调度平台添加周期性任务<br><img src="/images/job01.png" alt></li>
+<li>在任务调度平台添加延迟任务<br><img src="/images/job02.png" alt></li>
+</ul>
+<h4 id="通过接口注册定时任务和延迟任务"><a href="#通过接口注册定时任务和延迟任务" class="headerlink" title="通过接口注册定时任务和延迟任务"></a>通过接口注册定时任务和延迟任务</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Install-Package Hangfire.HttpJob.Client</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时任务</span></span><br><span class="line"><span class="keyword">var</span> result = HangfireJobClient.AddRecurringJob(<span class="string">"调度平台Server地址"</span>, <span class="keyword">new</span> RecurringJob()</span><br><span class="line">&#123;</span><br><span class="line">    JobName = <span class="string">"测试5点40执行"</span>,</span><br><span class="line">    Method = <span class="string">"Post"</span>,</span><br><span class="line">    Data = <span class="keyword">new</span> &#123;name = <span class="string">"aaa"</span>,age = <span class="number">10</span>&#125;,</span><br><span class="line">    Url = <span class="string">"http://localhost:5000/api/vaules"</span>,</span><br><span class="line">    Mail = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt; &#123; <span class="string">"510423039@qq.com"</span> &#125;,</span><br><span class="line">    SendSucMail = <span class="literal">true</span>,</span><br><span class="line">    Cron = <span class="string">"40 17 * * *"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//延迟任务</span></span><br><span class="line"><span class="keyword">var</span> result = HangfireJobClient.AddBackgroundJob(<span class="string">"调度平台Server地址"</span>, <span class="keyword">new</span> BackgroundJob</span><br><span class="line">&#123;</span><br><span class="line">    JobName = <span class="string">"测试api"</span>,</span><br><span class="line">    Method = <span class="string">"Get"</span>,</span><br><span class="line">    Url = <span class="string">"http://localhost:5000/api/values/11"</span>,</span><br><span class="line">    Mail = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt; &#123;<span class="string">"510423039@qq.com"</span>&#125;,</span><br><span class="line">    SendSucMail = <span class="literal">true</span>,</span><br><span class="line">    DelayFromMinutes = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="日志中心"><a href="#日志中心" class="headerlink" title="日志中心"></a>日志中心</h3><h4 id="Exceptionless"><a href="#Exceptionless" class="headerlink" title="Exceptionless"></a>Exceptionless</h4><ul>
+<li>Exceptionless 是一个开源的实时的日志收集框架，它可以应用在基于 ASP.NET，ASP.NET Core，Web Api，Web Forms，WPF，Console，MVC 等技术栈的应用程序中，并且提供了Rest接口可以应用在 Javascript，Node.js 中。</li>
+</ul>
+<ol>
+<li>首先，需要去<a href="http://exceptionless.com/" target="_blank" rel="noopener">官网</a>注册一个帐号，注册完成之后登录系统。</li>
+<li>Install-Package Exceptionless.AspNetCore　</li>
+<li>app.UseExceptionless(“key”);</li>
+</ol>
+<h3 id="容器服务"><a href="#容器服务" class="headerlink" title="容器服务"></a>容器服务</h3><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/02/CICD/Kubernetes/" rel="next" title="Kubernetes">
+                <i class="fa fa-chevron-left"></i> Kubernetes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/26/微服务/读微服务设计/" rel="prev" title="读微服务设计">
+                读微服务设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">WangJunZzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjunzzz" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务架构图"><span class="nav-number">1.</span> <span class="nav-text">微服务架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置中心"><span class="nav-number">2.</span> <span class="nav-text">配置中心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">2.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Features"><span class="nav-number">2.3.</span> <span class="nav-text">Features</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#统一管理不同环境、不同集群的配置"><span class="nav-number">2.3.1.</span> <span class="nav-text">统一管理不同环境、不同集群的配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置修改实时生效（热发布）"><span class="nav-number">2.3.2.</span> <span class="nav-text">配置修改实时生效（热发布）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#灰度发布"><span class="nav-number">2.3.3.</span> <span class="nav-text">灰度发布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#携程Apollo再-Net-FrameWork上的使用"><span class="nav-number">2.4.</span> <span class="nav-text">携程Apollo再.Net FrameWork上的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#携程Apollo再-NetCore2-x上的使用"><span class="nav-number">2.5.</span> <span class="nav-text">携程Apollo再.NetCore2.x上的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式一-注入IConfiguration-："><span class="nav-number">2.5.1.</span> <span class="nav-text">使用方式一(注入IConfiguration)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式二-POCO"><span class="nav-number">2.5.2.</span> <span class="nav-text">使用方式二(POCO):</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API网关"><span class="nav-number">3.</span> <span class="nav-text">API网关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求签名说明文档"><span class="nav-number">3.1.</span> <span class="nav-text">请求签名说明文档</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#名词解释"><span class="nav-number">3.1.1.</span> <span class="nav-text">名词解释</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue"><span class="nav-number">3.2.</span> <span class="nav-text">Vue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Net-Core-2-x"><span class="nav-number">3.3.</span> <span class="nav-text">.Net Core 2.x</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Net-Framework"><span class="nav-number">3.4.</span> <span class="nav-text">.Net Framework</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">3.5.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务注册和服务发现"><span class="nav-number">4.</span> <span class="nav-text">服务注册和服务发现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#新建项目"><span class="nav-number">4.0.1.</span> <span class="nav-text">新建项目</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#服务注册"><span class="nav-number"></span> <span class="nav-text">服务注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序设计"><span class="nav-number">1.</span> <span class="nav-text">应用程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是分布式事务"><span class="nav-number">1.1.</span> <span class="nav-text">什么是分布式事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CAP理论"><span class="nav-number">1.2.</span> <span class="nav-text">CAP理论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BASE理论"><span class="nav-number">1.3.</span> <span class="nav-text">BASE理论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于可靠消息服务的分布式事务"><span class="nav-number">1.4.</span> <span class="nav-text">基于可靠消息服务的分布式事务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CAP架构图"><span class="nav-number">1.4.1.</span> <span class="nav-text">CAP架构图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度中心"><span class="nav-number">2.</span> <span class="nav-text">任务调度中心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hangfire"><span class="nav-number">2.1.</span> <span class="nav-text">Hangfire</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过接口注册定时任务和延迟任务"><span class="nav-number">2.2.</span> <span class="nav-text">通过接口注册定时任务和延迟任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志中心"><span class="nav-number">3.</span> <span class="nav-text">日志中心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Exceptionless"><span class="nav-number">3.1.</span> <span class="nav-text">Exceptionless</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器服务"><span class="nav-number">4.</span> <span class="nav-text">容器服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">5.</span> <span class="nav-text">部署</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WangJunZzz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'RQYsCqcW6DHMyWHxkizmaiP1-gzGzoHsz',
+        appKey: 'tMxDsDzIVPbMWtnj6joLs5L2',
+        placeholder: '请在此输入您的留言!(支持Markdown)',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
