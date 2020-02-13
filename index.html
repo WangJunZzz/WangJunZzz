@@ -79,6 +79,7 @@
 
 
 
+<meta name="keywords" content="WangJunZzz">
 <meta property="og:type" content="website">
 <meta property="og:title" content="你好,WangJunZzz">
 <meta property="og:url" content="https://github.com/WangJunZzz/index.html">
@@ -311,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/10/29/小本本/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2020/02/09/微服务/K8S/Pod/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -330,7 +331,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/29/小本本/" itemprop="url">小本本</a></h1>
+                <a class="post-title-link" href="/2020/02/09/微服务/K8S/Pod/" itemprop="url">K8S-Pod</a></h1>
         
 
         <div class="post-meta">
@@ -342,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T21:16:48+08:00">
-                2019-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T11:09:55+08:00">
+                2020-02-09
               </time>
             
 
@@ -361,142 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/29/小本本/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/小本本/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          此文章已被加密，需要输入密码访问。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/29/小本本/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/10/29/书籍/第一步Docker书/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WangJunZzz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你好,WangJunZzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/29/书籍/第一步Docker书/" itemprop="url">第一步Docker书</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T19:18:38+08:00">
-                2019-10-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/10/29/书籍/第一步Docker书/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/书籍/第一步Docker书/" itemprop="commentCount"></span>
+                <a href="/2020/02/09/微服务/K8S/Pod/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/09/微服务/K8S/Pod/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -526,15 +393,17 @@
       
         
           
-          容器
-容器是直接运行在操作系统内核之上的用户空间。容器不仅仅是一个单纯的运行环境，在自己的权限范围内，容器更像是一个完整的宿主机。容器有独立的网路和存储栈，还拥有自己的资源管理能力，使得同一台宿主机中的多个容器可以友好的共存。
+          什么是Pod
+Pod是K8S最小调度单位。
+Pod可以由一个或者多个容器组合而成。
+Pod容器共享Volume
+很少会直接创建一个Pod,在大多数情况下，会通过RC,RS,Deployment,DaemonSet,Job等控制器完成对一组Pod副本的创建，调度以及生命周期的自动控制任务。
 
-Docker
-Docker是一个能够把开发得应用程序自动部署到容器得开
+通过De
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/10/29/书籍/第一步Docker书/#more" rel="contents">
+            <a class="btn" href="/2020/02/09/微服务/K8S/Pod/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -585,7 +454,7 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/10/24/书籍/高性能Msql-第三版/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2020/02/09/微服务/K8S/K8S安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -604,7 +473,7 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/24/书籍/高性能Msql-第三版/" itemprop="url">高性能Msql(第三版)</a></h1>
+                <a class="post-title-link" href="/2020/02/09/微服务/K8S/K8S安装/" itemprop="url">K8S安装</a></h1>
         
 
         <div class="post-meta">
@@ -616,8 +485,8 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-24T15:02:19+08:00">
-                2019-10-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T11:09:55+08:00">
+                2020-02-09
               </time>
             
 
@@ -635,8 +504,8 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/24/书籍/高性能Msql-第三版/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/24/书籍/高性能Msql-第三版/" itemprop="commentCount"></span>
+                <a href="/2020/02/09/微服务/K8S/K8S安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/09/微服务/K8S/K8S安装/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -666,15 +535,15 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
       
         
           
-          Mysql逻辑架构  
+          什么是K8S
+kubenetes是一个全新的基于容器技术的分布式架构解决方案，并且是一个一站式的完备的分布式系统开发和支撑平台。
 
-每个客户端连接都会在服务器进程种拥有一个线程,这个连接的查询只会在这个单独的线程中执行，改线程只能轮流在某个CPU核心或者CPU中运行。
 
-事务123456START TRANSACTION;-- 超出长度UPDATE `testlimit` b SET b.`IsDele
+Master节点上运行着集群管理相关的一组进程：Kube-apiserver,Kube-controller-manager和 Kube-scheduler,这些进程
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/10/24/书籍/高性能Msql-第三版/#more" rel="contents">
+            <a class="btn" href="/2020/02/09/微服务/K8S/K8S安装/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -725,7 +594,7 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/10/22/微服务/GRpc/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2020/01/12/VSCode快捷键/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -744,7 +613,7 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/22/微服务/GRpc/" itemprop="url">.Net Core GRpc</a></h1>
+                <a class="post-title-link" href="/2020/01/12/VSCode快捷键/" itemprop="url">VSCode快捷键</a></h1>
         
 
         <div class="post-meta">
@@ -756,8 +625,8 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-22T09:08:04+08:00">
-                2019-10-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T15:27:47+08:00">
+                2020-01-12
               </time>
             
 
@@ -775,8 +644,8 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/22/微服务/GRpc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/22/微服务/GRpc/" itemprop="commentCount"></span>
+                <a href="/2020/01/12/VSCode快捷键/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/12/VSCode快捷键/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -806,18 +675,17 @@ Docker是一个能够把开发得应用程序自动部署到容器得开
       
         
           
-          .Net Core GRpc
-gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
-
-现代高性能轻量级 RPC 框架。
-协定优先 API 开发，默认使用协议缓冲区，允许与语言无关的实现。
-可用于多种语言的工具，以生成强类型服务器和客户端。
-支持客户端、服务器和双向流式处理调用。
-使用 
+          
+删除一行代码：Ctrl+shift+k
+从当前光标开始新的一行  Ctrl+Enter
+移动当前行 Alt+上下左右
+粘贴当前行 Alt+Shift+上下
+格式化代码 Alt+Shift+F
+“Cmd + D” 这个命令的作用是，第一次按下时，它会选中光标附近的单词；第二次按下时，它会找到这个单词
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/10/22/微服务/GRpc/#more" rel="contents">
+            <a class="btn" href="/2020/01/12/VSCode快捷键/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -868,7 +736,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/09/30/csharp/23种设计模式/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/12/26/IdentityServer4源码阅读/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -887,7 +755,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/30/csharp/23种设计模式/" itemprop="url">23种设计模式</a></h1>
+                <a class="post-title-link" href="/2019/12/26/IdentityServer4源码阅读/" itemprop="url">IdentityServer4源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -899,8 +767,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T11:30:08+08:00">
-                2019-09-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T22:21:18+08:00">
+                2019-12-26
               </time>
             
 
@@ -918,8 +786,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/30/csharp/23种设计模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/30/csharp/23种设计模式/" itemprop="commentCount"></span>
+                <a href="/2019/12/26/IdentityServer4源码阅读/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/26/IdentityServer4源码阅读/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -949,14 +817,285 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
       
         
           
-          Source
-前言面向对象设计模式通常以类或者对象的描述其中的关系和相互作用，但不涉及用来完成应用程序的特定类或者对象。设计模式能使不稳定依赖于相对稳定，具体依赖相对抽象，避免引起麻烦的紧耦合，以增强软件设计面对适应变化的能力。
-六大原则
-单一职责原则：如果一个类承担的职责过多，就等于把这些职责耦合
+          https://id4withclients.readthedocs.io/en/latest/id4/ID4Database/DatabaseDiagramID4.html#client-app-related-tables
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/26/IdentityServer4源码阅读/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/12/25/开放平台搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WangJunZzz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你好,WangJunZzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/开放平台搭建/" itemprop="url">开放平台搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T23:06:43+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/25/开放平台搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/25/开放平台搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/开放平台搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/12/16/数据库/Mysql主从搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WangJunZzz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你好,WangJunZzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/16/数据库/Mysql主从搭建/" itemprop="url">Mysql主从搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T21:26:15+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/16/数据库/Mysql主从搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/数据库/Mysql主从搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          安装mysql:docker123456#my.cnf[mysqld]datadir=/var/lib/mysql!includedir /etc/mysql/conf.d#docker rundocker run -itd --name m2s1 --privileged=true -p 3307
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/30/csharp/23种设计模式/#more" rel="contents">
+            <a class="btn" href="/2019/12/16/数据库/Mysql主从搭建/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1007,7 +1146,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/09/26/微服务/读微服务设计/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/11/30/数据库/Mysql进阶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -1026,7 +1165,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/26/微服务/读微服务设计/" itemprop="url">读微服务设计</a></h1>
+                <a class="post-title-link" href="/2019/11/30/数据库/Mysql进阶/" itemprop="url">Mysql进阶</a></h1>
         
 
         <div class="post-meta">
@@ -1038,8 +1177,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T11:09:55+08:00">
-                2019-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T14:00:55+08:00">
+                2019-11-30
               </time>
             
 
@@ -1057,8 +1196,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/26/微服务/读微服务设计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/26/微服务/读微服务设计/" itemprop="commentCount"></span>
+                <a href="/2019/11/30/数据库/Mysql进阶/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/30/数据库/Mysql进阶/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1087,10 +1226,12 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
 
       
         
-          此文章已被加密，需要输入密码访问。
+          
+          
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/26/微服务/读微服务设计/#more" rel="contents">
+            <a class="btn" href="/2019/11/30/数据库/Mysql进阶/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1141,7 +1282,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/09/23/微服务/微服务架构/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/11/21/DotNet/NetCore3-0项目脚手架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -1160,7 +1301,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/23/微服务/微服务架构/" itemprop="url">微服务架构</a></h1>
+                <a class="post-title-link" href="/2019/11/21/DotNet/NetCore3-0项目脚手架/" itemprop="url">.NetCore3.0项目脚手架</a></h1>
         
 
         <div class="post-meta">
@@ -1172,8 +1313,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T09:48:15+08:00">
-                2019-09-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T10:24:44+08:00">
+                2019-11-21
               </time>
             
 
@@ -1183,6 +1324,28 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DotNet/" itemprop="url" rel="index">
+                    <span itemprop="name">DotNet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1191,8 +1354,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/23/微服务/微服务架构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/微服务/微服务架构/" itemprop="commentCount"></span>
+                <a href="/2019/11/21/DotNet/NetCore3-0项目脚手架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/21/DotNet/NetCore3-0项目脚手架/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1222,15 +1385,15 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
       
         
           
-          微服务架构图   
-配置中心背景随着业务的发展、微服务架构的升级，服务的数量、程序的配置日益增多（各种微服务、各种服务器地址、各种参数），传统的配置文件方式和数据库的方式已无法满足开发人员对配置管理的要求：
+          构建模板
+结构
 
-安全性：配置跟随源代码保存在代码库中，容易造成配置泄漏；
-时效性：修改配置，需要重启服务才
+Fairhr.WebApi.nuspec
+1234567891011121314&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;package xmlns="http://schemas.microsoft.com/packaging
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/23/微服务/微服务架构/#more" rel="contents">
+            <a class="btn" href="/2019/11/21/DotNet/NetCore3-0项目脚手架/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1281,7 +1444,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/09/02/CICD/Kubernetes/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/11/20/数据库/MyCat中间件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -1300,7 +1463,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/02/CICD/Kubernetes/" itemprop="url">Kubernetes</a></h1>
+                <a class="post-title-link" href="/2019/11/20/数据库/MyCat中间件/" itemprop="url">MyCat中间件</a></h1>
         
 
         <div class="post-meta">
@@ -1312,8 +1475,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T20:48:58+08:00">
-                2019-09-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-20T23:23:18+08:00">
+                2019-11-20
               </time>
             
 
@@ -1331,8 +1494,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/02/CICD/Kubernetes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/02/CICD/Kubernetes/" itemprop="commentCount"></span>
+                <a href="/2019/11/20/数据库/MyCat中间件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/20/数据库/MyCat中间件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1362,13 +1525,12 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
       
         
           
-          
-使用阿里云镜像安装Kubernetes
-前期准备 安装Docker;修改docker镜像源12345678910cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo[kubernetes]name=Kubernetesbaseurl=https
+          Java安装Java安装
+Mycat安装12345wget http://dl.mycat.io/1.6-RELEASE/Mycat-server-1.6-RELEASE-20161028204710-linux.tar.gztar -zxvf Mycat-server-1.6-RELEASE-20
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/02/CICD/Kubernetes/#more" rel="contents">
+            <a class="btn" href="/2019/11/20/数据库/MyCat中间件/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1419,7 +1581,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/08/31/CICD/Restful-Web-API/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/11/14/Python/Flask-API/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WangJunZzz">
@@ -1438,7 +1600,7 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/31/CICD/Restful-Web-API/" itemprop="url">Restful-Web-API</a></h1>
+                <a class="post-title-link" href="/2019/11/14/Python/Flask-API/" itemprop="url">Flask-API</a></h1>
         
 
         <div class="post-meta">
@@ -1450,8 +1612,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-31T11:41:09+08:00">
-                2019-08-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T21:09:28+08:00">
+                2019-11-14
               </time>
             
 
@@ -1461,6 +1623,28 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1469,8 +1653,8 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/31/CICD/Restful-Web-API/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/31/CICD/Restful-Web-API/" itemprop="commentCount"></span>
+                <a href="/2019/11/14/Python/Flask-API/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/14/Python/Flask-API/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1500,157 +1684,16 @@ gRPC 是一种与语言无关的高性能远程过程调用 (RPC) 框架。
       
         
           
-          
-Rest不是一个协议，也不是一种文件格式，更不是一种开发框架。它是一系列的涉及约束的集合：无状态性，讲超媒体作为应用状态的引擎等。
+          from flask import Blueprint
+orders = Blueprint(‘order’, name)
+from .OrderController import get_order
 
-服务器发送的表述用于描述资源当前的状态，客户端发送的表述用于描述客户端希望资源拥有的状态，这就是表述性状态转移。
-GET 获取资源的某个表述，请求成功返回200
-P
+from . import orders
+@orders.route(“”, methods=[
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/08/31/CICD/Restful-Web-API/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/08/27/CICD/Https/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WangJunZzz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你好,WangJunZzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/27/CICD/Https/" itemprop="url">Https</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T20:19:14+08:00">
-                2019-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/27/CICD/Https/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/CICD/Https/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-Http的定义
-
-http提供了一组规则和标准，从而让信息能够在互联网上进行传播。
-http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
-通过ip地址+协议+端口标识网络中的一个进程，标识唯一一个进程之后，就可以进行socket通信了，socket是应用层和传输层之间的一个抽象层，它
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/27/CICD/Https/#more" rel="contents">
+            <a class="btn" href="/2019/11/14/Python/Flask-API/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1692,7 +1735,7 @@ http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1738,7 +1781,7 @@ http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1749,7 +1792,7 @@ http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1760,7 +1803,7 @@ http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1807,7 +1850,7 @@ http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1817,15 +1860,9 @@ http 超文本传输协议；tcp 传输控制协议 ；ip 网间协议；
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 

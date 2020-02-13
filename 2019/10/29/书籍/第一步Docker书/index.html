@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="容器 容器是直接运行在操作系统内核之上的用户空间。容器不仅仅是一个单纯的运行环境，在自己的权限范围内，容器更像是一个完整的宿主机。容器有独立的网路和存储栈，还拥有自己的资源管理能力，使得同一台宿主机中的多个容器可以友好的共存。  Docker Docker是一个能够把开发得应用程序自动部署到容器得开源引擎。Docker镜像是构建docker世界得基石，用户基于镜像来运行自己得容器。镜像是Docke">
+<meta name="keywords" content="WangJunZzz">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一步Docker书">
 <meta property="og:url" content="https://github.com/WangJunZzz/2019/10/29/书籍/第一步Docker书/index.html">
 <meta property="og:site_name" content="你好,WangJunZzz">
 <meta property="og:description" content="容器 容器是直接运行在操作系统内核之上的用户空间。容器不仅仅是一个单纯的运行环境，在自己的权限范围内，容器更像是一个完整的宿主机。容器有独立的网路和存储栈，还拥有自己的资源管理能力，使得同一台宿主机中的多个容器可以友好的共存。  Docker Docker是一个能够把开发得应用程序自动部署到容器得开源引擎。Docker镜像是构建docker世界得基石，用户基于镜像来运行自己得容器。镜像是Docke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-29T13:16:22.276Z">
+<meta property="og:updated_time" content="2019-11-03T12:50:30.215Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一步Docker书">
 <meta name="twitter:description" content="容器 容器是直接运行在操作系统内核之上的用户空间。容器不仅仅是一个单纯的运行环境，在自己的权限范围内，容器更像是一个完整的宿主机。容器有独立的网路和存储栈，还拥有自己的资源管理能力，使得同一台宿主机中的多个容器可以友好的共存。  Docker Docker是一个能够把开发得应用程序自动部署到容器得开源引擎。Docker镜像是构建docker世界得基石，用户基于镜像来运行自己得容器。镜像是Docke">
@@ -401,7 +402,7 @@
 <li>加速本地开发和构建流程，使其更加高效，轻量化。</li>
 <li>高性能，超大规模得宿主机部署。</li>
 </ol>
-<h4 id="Docker-命令"><a href="#Docker-命令" class="headerlink" title="Docker 命令"></a>Docker 命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull</span><br><span class="line"><span class="comment"># 查找镜像</span></span><br><span class="line">docker search images_name</span><br><span class="line"><span class="comment"># 运行一个容器</span></span><br><span class="line">docker run -it --name docker_name ubuntu /bin/bash</span><br><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker start docker_name</span><br><span class="line"><span class="comment"># 停止容器</span></span><br><span class="line">docker stop docker_name</span><br><span class="line"><span class="comment"># 重启容器</span></span><br><span class="line">docker restart docker_name</span><br><span class="line"><span class="comment"># 查看所有容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 附着到容器[如果推出容器得shell，容器会停止]</span></span><br><span class="line">docker attach docker_name</span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">docker logs docker_name</span><br><span class="line"><span class="comment"># 统计容器信息</span></span><br><span class="line">docker stats</span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it docker_name /bin/bash</span><br><span class="line"><span class="comment"># 自动重启容器</span></span><br><span class="line">docker run --name docker_name --restart=always ubuntu /bin/bash</span><br><span class="line"><span class="comment"># 删除容器</span></span><br><span class="line">docker rm docker_name</span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi docker_image</span><br><span class="line"><span class="comment"># 查看镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h4 id="Docker-命令"><a href="#Docker-命令" class="headerlink" title="Docker 命令"></a>Docker 命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull</span><br><span class="line"><span class="comment"># 查找镜像</span></span><br><span class="line">docker search images_name</span><br><span class="line"><span class="comment"># 运行一个容器</span></span><br><span class="line">docker run -it --name docker_name ubuntu /bin/bash</span><br><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker start docker_name</span><br><span class="line"><span class="comment"># 停止容器</span></span><br><span class="line">docker stop docker_name</span><br><span class="line"><span class="comment"># 重启容器</span></span><br><span class="line">docker restart docker_name</span><br><span class="line"><span class="comment"># 查看所有容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 附着到容器[如果推出容器得shell，容器会停止]</span></span><br><span class="line">docker attach docker_name</span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">docker logs docker_name</span><br><span class="line"><span class="comment"># 统计容器信息</span></span><br><span class="line">docker stats</span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it docker_name /bin/bash</span><br><span class="line"><span class="comment"># 自动重启容器</span></span><br><span class="line">docker run --name docker_name --restart=always ubuntu /bin/bash</span><br><span class="line"><span class="comment"># 删除容器</span></span><br><span class="line">docker rm docker_name</span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi docker_image</span><br><span class="line"><span class="comment"># 查看镜像</span></span><br><span class="line">docker images</span><br><span class="line"><span class="comment"># wangjunzzz仓库名，static_web镜像名，v1 标签  --no-cache 不使用缓存</span></span><br><span class="line">docker build --no-cache -t=<span class="string">"wangjunzzz/static_web:v1"</span> </span><br><span class="line"><span class="comment"># 推送镜像</span></span><br><span class="line">docker push wangjunzzz/static_web</span><br></pre></td></tr></table></figure>
 
 <h3 id="Dockerfile构建镜像"><a href="#Dockerfile构建镜像" class="headerlink" title="Dockerfile构建镜像"></a>Dockerfile构建镜像</h3><h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
 <li><p>FROM 指定基础镜像</p>
@@ -425,12 +426,21 @@
 <li><p>VOLUME 挂载卷</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VOLUME [<span class="string">"/data"</span>]</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>ADD </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wangjunzzz仓库名，static_web镜像名，v1 标签  --no-cache 不使用缓存</span></span><br><span class="line">docker build --no-cache -t=<span class="string">"wangjunzzz/static_web:v1"</span></span><br></pre></td></tr></table></figure>
+<li><p>ADD 将构建环境下的文件和目录复制到镜像中，并且还可以解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD /mnt/test.zip /root/test.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COPY 将构建环境下的文件和目录复制到镜像中，只是复制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY /mnt/test.zip /root/test.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LABEL 指定元数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#镜像的相关信息</span></span><br><span class="line">LABEL Discription=<span class="string">"这是基于dotnetcore的泛优镜像"</span></span><br><span class="line">LABEL version=<span class="string">"1.0"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ARG 构建时候传递参数变化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义参数 通过ARG 可以在构建镜像的时候定义参数</span></span><br><span class="line">ARG env</span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line">ENV ASPNETCORE_ENVIRONMENT=<span class="variable">$env</span></span><br><span class="line"><span class="comment">#基于之前的Dockerfile构建泛优的系统镜像</span></span><br><span class="line">docker build -t supback --build-arg env=<span class="string">"Development"</span> .</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-
+<h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker-Compose"></a>Docker-Compose</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装pip</span></span><br><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install python-pip</span><br><span class="line">pip install --upgrade pip</span><br><span class="line">pip install docker-compose </span><br><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -454,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/24/书籍/高性能Msql-第三版/" rel="next" title="高性能Msql(第三版)">
-                <i class="fa fa-chevron-left"></i> 高性能Msql(第三版)
+              <a href="/2019/10/29/微服务/Polly+HttpClientFactory/" rel="next" title="Polly+HttpClientFactory">
+                <i class="fa fa-chevron-left"></i> Polly+HttpClientFactory
               </a>
             
           </div>
@@ -464,8 +474,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/29/小本本/" rel="prev" title="小本本">
-                小本本 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/06/DotNet/XUnit单元测试/" rel="prev" title="XUnit单元测试">
+                XUnit单元测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -584,7 +594,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -595,7 +605,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -606,7 +616,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -649,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器"><span class="nav-number">1.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker应用场景"><span class="nav-number">2.1.</span> <span class="nav-text">Docker应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-命令"><span class="nav-number">2.2.</span> <span class="nav-text">Docker 命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile构建镜像"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile构建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令"><span class="nav-number">3.1.</span> <span class="nav-text">指令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器"><span class="nav-number">1.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker应用场景"><span class="nav-number">2.1.</span> <span class="nav-text">Docker应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-命令"><span class="nav-number">2.2.</span> <span class="nav-text">Docker 命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile构建镜像"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile构建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令"><span class="nav-number">3.1.</span> <span class="nav-text">指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Compose"><span class="nav-number">4.</span> <span class="nav-text">Docker-Compose</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -669,7 +679,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -679,15 +689,9 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 

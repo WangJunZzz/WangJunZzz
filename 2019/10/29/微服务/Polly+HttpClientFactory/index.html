@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微服务,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Polly 在.Net Core中有一个被.Net基金会认可的库Polly，它一种弹性和瞬态故障处理库，可以用来简化对服务熔断降级的处理。Polly的策略主要由“故障”和“动作”两个部分组成，“故障”可以包括异常、超时等情况，“动作”则包括Fallback（降级）、重试（Retry）、熔断（Circuit-Breaker）等。策略则用来执行业务代码，当业务代码出现了“故障”中的情况时就开始执行“动">
+<meta name="keywords" content="微服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Polly+HttpClientFactory">
+<meta property="og:url" content="https://github.com/WangJunZzz/2019/10/29/微服务/Polly+HttpClientFactory/index.html">
+<meta property="og:site_name" content="你好,WangJunZzz">
+<meta property="og:description" content="Polly 在.Net Core中有一个被.Net基金会认可的库Polly，它一种弹性和瞬态故障处理库，可以用来简化对服务熔断降级的处理。Polly的策略主要由“故障”和“动作”两个部分组成，“故障”可以包括异常、超时等情况，“动作”则包括Fallback（降级）、重试（Retry）、熔断（Circuit-Breaker）等。策略则用来执行业务代码，当业务代码出现了“故障”中的情况时就开始执行“动">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-23T15:25:21.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Polly+HttpClientFactory">
+<meta name="twitter:description" content="Polly 在.Net Core中有一个被.Net基金会认可的库Polly，它一种弹性和瞬态故障处理库，可以用来简化对服务熔断降级的处理。Polly的策略主要由“故障”和“动作”两个部分组成，“故障”可以包括异常、超时等情况，“动作”则包括Fallback（降级）、重试（Retry）、熔断（Circuit-Breaker）等。策略则用来执行业务代码，当业务代码出现了“故障”中的情况时就开始执行“动">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/WangJunZzz/2019/10/29/微服务/Polly+HttpClientFactory/">
+
+
+
+
+
+  <title>Polly+HttpClientFactory | 你好,WangJunZzz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">你好,WangJunZzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home  //首页"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user  //关于"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags  //标签"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th   //分类"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive //归档"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar   //日程表"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap   //站点地图"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/WangJunZzz/2019/10/29/微服务/Polly+HttpClientFactory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WangJunZzz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你好,WangJunZzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Polly+HttpClientFactory</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T14:08:09+08:00">
+                2019-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微服务/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/29/微服务/Polly+HttpClientFactory/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/微服务/Polly+HttpClientFactory/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Polly"><a href="#Polly" class="headerlink" title="Polly"></a>Polly</h3><blockquote>
+<p>在.Net Core中有一个被.Net基金会认可的库Polly，它一种弹性和瞬态故障处理库，可以用来简化对服务熔断降级的处理。<br>Polly的策略主要由“故障”和“动作”两个部分组成，“故障”可以包括异常、超时等情况，“动作”则包括Fallback（降级）、重试（Retry）、熔断（Circuit-Breaker）等。策略则用来执行业务代码，当业务代码出现了“故障”中的情况时就开始执行“动作”。<br>主要包含以下功能：</p>
+<ul>
+<li>重试(Retry)</li>
+<li>断路器(Circuit-breaker)</li>
+<li>超时检测(Timeout)</li>
+<li>回退(FallBack)</li>
+<li>策略包装(PolicyWrap)</li>
+</ul>
+</blockquote>
+<h4 id="故障定义"><a href="#故障定义" class="headerlink" title="故障定义"></a>故障定义</h4><blockquote>
+<p>故障也可以说是触发条件，它使用Handle<t>来定义，表示在什么情况下，才对其进行处理（熔断，降级，重试等）。</t></p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单一异常种类</span></span><br><span class="line">Policy.Handle&lt;HttpRequestException&gt;();</span><br><span class="line"><span class="comment">// 带条件判断的单一异常</span></span><br><span class="line">Policy.Handle&lt;SqlException&gt;(ex =&gt; ex.Number == <span class="number">10</span>)</span><br><span class="line"><span class="comment">// 多种异常</span></span><br><span class="line">Policy.Handle&lt;HttpRequestException&gt;().Or&lt;OperationCanceledException&gt;()</span><br><span class="line"><span class="comment">// 多种异常</span></span><br><span class="line">Policy.Handle&lt;HttpRequestException&gt;().OrResult&lt;HttpResponseMessage&gt;(res =&gt; res.StatusCode != HttpStatusCode.OK)</span><br><span class="line"><span class="comment">// 返回结果异常</span></span><br><span class="line">Policy.HandleResult&lt;HttpResponseMessage&gt;(r =&gt; r.StatusCode != HttpStatusCode.OK)</span><br></pre></td></tr></table></figure>
+
+<h4 id="重试-Retry"><a href="#重试-Retry" class="headerlink" title="重试(Retry)"></a>重试(Retry)</h4><blockquote>
+<p>重试就是指Polly在调用失败时捕获我们指定的异常，并重新发起调用，如果重试成功，那么对于调用者来说，就像没有发生过异常一样。在网络调用中经常出现瞬时故障，那么重试机制就非常重要。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> HttpClient();</span><br><span class="line">Policy</span><br><span class="line">    <span class="comment">// 处理什么异常，比如httprequrest异常</span></span><br><span class="line">    .Handle&lt;HttpRequestException&gt;()</span><br><span class="line">    <span class="comment">// 或者处理response的httpstatuscode 不等于200的情况</span></span><br><span class="line">    .OrResult&lt;HttpResponseMessage&gt;(res =&gt; res.StatusCode != HttpStatusCode.OK)</span><br><span class="line">    <span class="comment">// 重试次数 3</span></span><br><span class="line">    .Retry(<span class="number">3</span>,</span><br><span class="line">        (ex, retryCount,content) =&gt; </span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"请求Api异常,进行第<span class="subst">&#123;retryCount&#125;</span>次重试,ErrorCode:<span class="subst">&#123;ex.Result.StatusCode&#125;</span>"</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="comment">// 要执行的任务</span></span><br><span class="line">    .Execute(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        HttpResponseMessage res = client.GetAsync(<span class="string">"http://qa.xx.com/Social/policy/1"</span>).Result;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="回退-FallBack"><a href="#回退-FallBack" class="headerlink" title="回退(FallBack)"></a>回退(FallBack)</h4><blockquote>
+<p>回退也称服务降级，用来指定发生故障时的备用方案。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> HttpClient();</span><br><span class="line">Policy</span><br><span class="line">    .Handle&lt;HttpRequestException&gt;()</span><br><span class="line">    .OrResult&lt;HttpResponseMessage&gt;(res =&gt; res.StatusCode != HttpStatusCode.OK)</span><br><span class="line">    <span class="comment">// 出现异常只会回退处理</span></span><br><span class="line">    .Fallback(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        HttpResponseMessage res =</span><br><span class="line">            client.GetAsync(<span class="string">"http://qa.xx.com/Social/policy/2"</span>).Result;</span><br><span class="line">        Console.WriteLine(<span class="string">"Fallback（降级）处理."</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    .Execute(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        HttpResponseMessage res =</span><br><span class="line">            client.GetAsync(<span class="string">"http://qa.xx.com/Social/policy/1"</span>).Result;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="超时-Timeou"><a href="#超时-Timeou" class="headerlink" title="超时(Timeou)"></a>超时(Timeou)</h4><p>Polly支持两种超时策略：</p>
+<ul>
+<li>TimeoutStrategy.Pessimistic： 悲观模式<br>当委托到达指定时间没有返回时，不继续等待委托完成，并抛超时TimeoutRejectedException异常。</li>
+<li>TimeoutStrategy.Optimistic：乐观模式<br>这个模式依赖于 <a href="https://docs.microsoft.com/zh-cn/dotnet/standard/threading/cancellation-in-managed-threads?redirectedfrom=MSDN" target="_blank" rel="noopener">co-operative cancellation</a>，只是触发CancellationTokenSource.Cancel函数，需要等待委托自行终止操作。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var timeoutPolicy = Policy.TimeoutAsync(1, TimeoutStrategy.Pessimistic,</span><br><span class="line">    (context, timespan, task) =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"请求超时."</span>);</span><br><span class="line">        <span class="built_in">return</span> Task.CompletedTask;</span><br><span class="line">    &#125;);</span><br><span class="line">timeoutPolicy.ExecuteAsync(async () =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var client = new HttpClient();</span><br><span class="line">    await   client.GetAsync(<span class="string">"http://localhost:5000/home/delay"</span>);</span><br><span class="line">    <span class="built_in">return</span> Task.CompletedTask;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="熔断-Circuit-breaker"><a href="#熔断-Circuit-breaker" class="headerlink" title="熔断(Circuit-breaker)"></a>熔断(Circuit-breaker)</h4><blockquote>
+<p>如果调用某个目标服务出现过多超时、异常等情况，可以采取一定时间内熔断该服务的调用，熔断期间的请求将不再继续调用目标服务，而是直接返回，节约资源，提高服务的稳定性，熔断周期结束后如果目标服务情况好转则恢复调用。</p>
+</blockquote>
+<h5 id="熔断状态"><a href="#熔断状态" class="headerlink" title="熔断状态"></a>熔断状态</h5><ul>
+<li>打开（Open）<blockquote>
+<p>熔断器打开状态，此时对目标服务的调用都直接返回错误，熔断周期内不会走网络请求，当熔断周期结束时进入半开状态；</p>
+</blockquote>
+</li>
+<li>关闭（Closed）<blockquote>
+<p>关闭状态下正常发生网络请求，但会记录符合熔断条件的连续执行次数，如果错误数量达到设定的阈值（如果在没有达到阈值之前恢复正常，之前的累积次数将会归零），熔断状态进入到打开状态；</p>
+</blockquote>
+</li>
+<li>半开（Half-Open）<blockquote>
+<p>半开状态下允许定量的服务请求，如果调用都成功则认为恢复了，关闭熔断器，否则认为还没好，又回到熔断器打开状态；</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>注意：为了服务的稳定性，在执行需要多次 Retry（重试策略）的情况下，最好组合熔断策略，预防可能存在的风险。</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> HttpClient();</span><br><span class="line"><span class="keyword">var</span> ciruitBreaker = Policy.Handle&lt;Exception&gt;()</span><br><span class="line">    <span class="comment">// 熔断前允许出现3次错误,熔断时间10s,熔断时触发, 熔断恢复时触发,在熔断时间到了之后触发</span></span><br><span class="line">    .CircuitBreaker(<span class="number">3</span>, TimeSpan.FromSeconds(<span class="number">10</span>),</span><br><span class="line">        (ex, breakDelay) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//熔断时触发</span></span><br><span class="line">            Console.WriteLine(<span class="string">"断路器打开,熔断触发."</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        () =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//熔断恢复时触发</span></span><br><span class="line">            Console.WriteLine(<span class="string">"熔断器关闭了."</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        () =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//在熔断时间到了之后触发</span></span><br><span class="line">            Console.WriteLine(<span class="string">"熔断时间到，进入半开状态"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">// 模拟多次调用，触发熔断</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">150</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        ciruitBreaker.Execute(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"第<span class="subst">&#123;i&#125;</span>次开始执行."</span>);</span><br><span class="line">            <span class="keyword">var</span> res = client.GetAsync(<span class="string">"http://localhost:5000/home/delay"</span>).Result;</span><br><span class="line">            Console.WriteLine(<span class="string">$"第<span class="subst">&#123;i&#125;</span>次执行：正常:"</span> + res.StatusCode);</span><br><span class="line">            Thread.Sleep(TimeSpan.FromSeconds(<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$"第<span class="subst">&#123;i&#125;</span>次执行：异常:"</span> + e.Message);</span><br><span class="line">        Thread.Sleep(TimeSpan.FromSeconds(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="熔断高级配置"><a href="#熔断高级配置" class="headerlink" title="熔断高级配置"></a>熔断高级配置</h5><blockquote>
+<p>根据时间段内总请求数中的异常比例触发熔断</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> HttpClient();</span><br><span class="line"><span class="keyword">var</span> advancedCircuitBreaker = Policy.Handle&lt;Exception&gt;()</span><br><span class="line">    .AdvancedCircuitBreaker(<span class="number">0.5</span>, TimeSpan.FromSeconds(<span class="number">10</span>), <span class="number">3</span>, TimeSpan.FromSeconds(<span class="number">10</span>),</span><br><span class="line">        (ex, breakDelay) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"断路器打开,熔断触发."</span>);</span><br><span class="line">        &#125;, () =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"熔断器关闭了."</span>);</span><br><span class="line">        &#125;, () =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"熔断时间到，进入半开状态"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟多次调用，触发熔断</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">150</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        advancedCircuitBreaker.Execute(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"第<span class="subst">&#123;i&#125;</span>次开始执行."</span>);</span><br><span class="line">            <span class="keyword">var</span> res = client.GetAsync(<span class="string">"http://localhost:5000/home/delay"</span>).Result;</span><br><span class="line">            Console.WriteLine(<span class="string">$"第<span class="subst">&#123;i&#125;</span>次执行：正常:"</span> + res.StatusCode);</span><br><span class="line">            Thread.Sleep(TimeSpan.FromSeconds(<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$"第<span class="subst">&#123;i&#125;</span>次执行：异常:"</span> + e.Message);</span><br><span class="line">        Thread.Sleep(TimeSpan.FromSeconds(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="策略包装-PolicyWrap"><a href="#策略包装-PolicyWrap" class="headerlink" title="策略包装(PolicyWrap)"></a>策略包装(PolicyWrap)</h4><blockquote>
+<p>策略包提供了一种灵活的方式来封装多个弹性策略(从右往左).</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义超时</span></span><br><span class="line"><span class="keyword">var</span> timeOut = Policy.Timeout(TimeSpan.FromSeconds(<span class="number">10</span>),</span><br><span class="line">    ((context, timespan, task) =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"请求超时."</span>);</span><br><span class="line">    &#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义重试</span></span><br><span class="line"><span class="keyword">var</span> retry = Policy.Handle&lt;Exception&gt;()</span><br><span class="line">    .Retry(<span class="number">3</span>, ((exception, retryCount, context) =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$"第<span class="subst">&#123;retryCount&#125;</span>次重试."</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="comment">// 定义熔断策略</span></span><br><span class="line"><span class="keyword">var</span> circuitBreaker = Policy.Handle&lt;Exception&gt;()</span><br><span class="line">    <span class="comment">// 熔断前允许出现3次错误,熔断时间10s,熔断时触发, 熔断恢复时触发,在熔断时间到了之后触发</span></span><br><span class="line">    .CircuitBreaker(<span class="number">3</span>, TimeSpan.FromSeconds(<span class="number">10</span>),</span><br><span class="line">        (ex, breakDelay) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//熔断时触发</span></span><br><span class="line">            Console.WriteLine(<span class="string">"断路器打开,熔断触发."</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        () =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//熔断恢复时触发</span></span><br><span class="line">            Console.WriteLine(<span class="string">"熔断器关闭了."</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        () =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//在熔断时间到了之后触发</span></span><br><span class="line">            Console.WriteLine(<span class="string">"熔断时间到，进入半开状态"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义回退策略</span></span><br><span class="line"><span class="keyword">var</span> fallback = Policy.Handle&lt;Exception&gt;()</span><br><span class="line">    .Fallback(() =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"正在降级处理."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">fallback.Wrap(Policy.Wrap(circuitBreaker,retry, timeOut)).Execute(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"start."</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="HttpClientFactory"><a href="#HttpClientFactory" class="headerlink" title="HttpClientFactory"></a>HttpClientFactory</h3><ul>
+<li>提供一个中心位置，用于命名和配置逻辑 HttpClient 对象.</li>
+<li>管理 HttpClientMessageHandlers 的生存期，避免在HttpClient 生存期时出现问题.</li>
+<li>在 HttpClient 中委托处理程序并实现基于 Polly 的中间件以利用 Polly 的复原策略。<br><a href="https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.0" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.0</a><h4 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h4><blockquote>
+<p>Install Microsoft.Extensions.Http<br>如果有多个可以同时使用</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// StartUp-&gt;ConfigureServices</span></span><br><span class="line">services.AddHttpClient(<span class="string">"local"</span>,options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    options.BaseAddress = <span class="keyword">new</span> Uri(<span class="string">"http://localhost:5000"</span>);</span><br><span class="line">&#125;</span><br><span class="line">services.AddHttpClient(<span class="string">"fanyou"</span>,options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    options.BaseAddress = <span class="keyword">new</span> Uri(<span class="string">"http://qa.fanyouvip.com"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">[<span class="meta">Route(<span class="meta-string">"client"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ClientController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IHttpClientFactory _clientFactory;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ClientController</span>(<span class="params">IHttpClientFactory clientFactory</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _clientFactory = clientFactory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">HttpGet(<span class="meta-string">"Local"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;IActionResult&gt; <span class="title">Local</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> client = _clientFactory.CreateClient(<span class="string">"local"</span>);</span><br><span class="line">        <span class="keyword">var</span> res = <span class="keyword">await</span> client.GetAsync(<span class="string">"/home/delay"</span>);</span><br><span class="line">        <span class="keyword">return</span> Ok(res);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [<span class="meta">HttpGet(<span class="meta-string">"Fanyou"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;IActionResult&gt; <span class="title">Fanyou</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> client = _clientFactory.CreateClient(<span class="string">"fanyou"</span>);</span><br><span class="line">        <span class="keyword">var</span> res = <span class="keyword">await</span> client.GetAsync(<span class="string">"/social"</span>);</span><br><span class="line">        <span class="keyword">return</span> Ok(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="结合Polly"><a href="#结合Polly" class="headerlink" title="结合Polly"></a>结合Polly</h4><blockquote>
+<p>Install Microsoft.Extensions.Http.Polly</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方式</span></span><br><span class="line">services.AddHttpClient(<span class="string">"local"</span>,</span><br><span class="line">        options =&gt; &#123; options.BaseAddress = <span class="keyword">new</span> Uri(<span class="string">"http://localhost:5000"</span>); &#125;)</span><br><span class="line">    .AddTransientHttpErrorPolicy(p =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> handlers = p.OrResult(result =&gt; result.StatusCode != HttpStatusCode.OK)</span><br><span class="line">            .RetryAsync(<span class="number">3</span>,</span><br><span class="line">                (ex, retryCount, context) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$"第<span class="subst">&#123;retryCount&#125;</span>次重试.异常:<span class="subst">&#123;ex.Exception.Message&#125;</span>"</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">        <span class="keyword">return</span> handlers;</span><br><span class="line">    &#125;).AddTransientHttpErrorPolicy(p =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> breaker = p.CircuitBreakerAsync(<span class="number">3</span>, TimeSpan.FromSeconds(<span class="number">10</span>));</span><br><span class="line">        <span class="keyword">return</span> breaker;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二种方式</span></span><br><span class="line">services.AddHttpClient(<span class="string">"Test"</span>,</span><br><span class="line">        options =&gt; &#123; options.BaseAddress = <span class="keyword">new</span> Uri(<span class="string">"http://localhost:5003"</span>); &#125;)</span><br><span class="line">    .AddPolicyHandler(RetryPolicy())</span><br><span class="line">    .AddPolicyHandler(CircuiBreakerPolicy());</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 重试策略</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>IAsyncPolicy<span class="doctag">&lt;HttpResponseMessage&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> IAsyncPolicy&lt;HttpResponseMessage&gt; <span class="title">RetryPolicy</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> HttpPolicyExtensions</span><br><span class="line">        .HandleTransientHttpError()</span><br><span class="line">        .OrResult(res =&gt; res.StatusCode != HttpStatusCode.OK)</span><br><span class="line">        .WaitAndRetryAsync(<span class="number">3</span>, retryCount =&gt; TimeSpan.FromSeconds(Math.Pow(<span class="number">2</span>, retryCount)));</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 熔断策略</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>IAsyncPolicy<span class="doctag">&lt;HttpResponseMessage&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> IAsyncPolicy&lt;HttpResponseMessage&gt; <span class="title">CircuiBreakerPolicy</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> HttpPolicyExtensions</span><br><span class="line">        .HandleTransientHttpError()</span><br><span class="line">        .CircuitBreakerAsync(<span class="number">5</span>, TimeSpan.FromMinutes(<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/WangJunZzz/Polly.Demo">源码示例</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微服务/" rel="tag"># 微服务</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/24/书籍/高性能Msql-第三版/" rel="next" title="高性能Msql(第三版)">
+                <i class="fa fa-chevron-left"></i> 高性能Msql(第三版)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/29/书籍/第一步Docker书/" rel="prev" title="第一步Docker书">
+                第一步Docker书 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">WangJunZzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wangjunzzz" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Polly"><span class="nav-number">1.</span> <span class="nav-text">Polly</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#故障定义"><span class="nav-number">1.1.</span> <span class="nav-text">故障定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重试-Retry"><span class="nav-number">1.2.</span> <span class="nav-text">重试(Retry)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回退-FallBack"><span class="nav-number">1.3.</span> <span class="nav-text">回退(FallBack)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超时-Timeou"><span class="nav-number">1.4.</span> <span class="nav-text">超时(Timeou)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熔断-Circuit-breaker"><span class="nav-number">1.5.</span> <span class="nav-text">熔断(Circuit-breaker)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#熔断状态"><span class="nav-number">1.5.1.</span> <span class="nav-text">熔断状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#熔断高级配置"><span class="nav-number">1.5.2.</span> <span class="nav-text">熔断高级配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#策略包装-PolicyWrap"><span class="nav-number">1.6.</span> <span class="nav-text">策略包装(PolicyWrap)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HttpClientFactory"><span class="nav-number">2.</span> <span class="nav-text">HttpClientFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单使用"><span class="nav-number">2.1.</span> <span class="nav-text">简单使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结合Polly"><span class="nav-number">2.2.</span> <span class="nav-text">结合Polly</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WangJunZzz</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'RQYsCqcW6DHMyWHxkizmaiP1-gzGzoHsz',
+        appKey: 'tMxDsDzIVPbMWtnj6joLs5L2',
+        placeholder: '请在此输入您的留言!(支持Markdown)',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
